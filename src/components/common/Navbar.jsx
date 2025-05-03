@@ -4,9 +4,10 @@ import CategorySelectBox from '../navbar/CategorySelectBox';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '../ui/button';
 import SaerchBar from '../navbar/SaerchBar';
+import { useUserStore } from '@/stores/useUserStore';
 
 const Navbar = () => {
-  const signedUp = false;
+  const { isLoggedIn } = useUserStore()
 
   return (
     <nav className='w-full px-14 flex justify-between items-center border-b shadow-md shadow-dark-400'>
@@ -31,7 +32,7 @@ const Navbar = () => {
           <span className='font-semibold'>About Us</span>
         </NavLink>
 
-        {signedUp ? (
+        {!isLoggedIn ? (
           <div className='flex gap-x-2'>
             <Link to='/signup'>
               <Button>Sign Up</Button>
