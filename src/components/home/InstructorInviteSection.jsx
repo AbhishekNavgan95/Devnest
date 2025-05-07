@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '../common/Container'
 import HilightText from '../common/HilightText'
-import Instructor from '../../assets/images/instructor.png'
 import Instructor2 from '../../assets/images/instructor2.png'
+import Instructor1 from '../../assets/images/instructor1.png'
 import { Button } from '../ui/button'
 
 const InstructorInviteSection = () => {
@@ -13,7 +13,7 @@ const InstructorInviteSection = () => {
                 <div className='text-start w-[50%] flex flex-col mt-8 gap-y-8'>
                     <h2 className='text-3xl mb-4 font-medium leading-normal'>Join Devnest as an <HilightText className={'text-3xl py-1'}>Instructor</HilightText></h2>
 
-                    <img src={Instructor} alt="instructor" className='border border-dark-700 rounded-lg' />
+                    <img src={Instructor1} alt="instructor" className='border border-dark-700 rounded-lg' />
                 </div>
 
                 <div className='flex w-[50%] flex-col gap-y-8'>
