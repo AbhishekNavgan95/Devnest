@@ -1,6 +1,6 @@
 import { useNavigate } from 'react-router-dom'
 import React, { useState } from 'react'
-import logo from '@/assets/logo/logo.png'
+import logo from '../../assets/logo/logo.png'
 import { commonDashboardRoutes, userRoutes } from '@/lib/data'
 import { useUserStore } from '@/stores/useUserStore'
 import { Link, NavLink } from 'react-router-dom'

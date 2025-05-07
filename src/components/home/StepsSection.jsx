@@ -1,9 +1,9 @@
 import React, { useState, useEffect } from 'react';
 import Container from '../common/Container';
 import { IoMdArrowDropright } from "react-icons/io";
-import community from '@/assets/images/community.png'
-import growth from '@/assets/images/growth.png'
-import explore from '@/assets/images/explore.png'
+import community from '../../assets/images/community.png'
+import growth from '../../assets/images/growth.png'
+import explore from '../../assets/images/explore.png'
 
 const featureData = [
     {

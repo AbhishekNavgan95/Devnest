@@ -1,6 +1,6 @@
 import Container from '@/components/common/Container'
 import React, { useState } from 'react'
-import logo from '@/assets/logo/logo.png'
+import logo from '../assets/logo/logo.png'
 import { useNavigate, useParams } from 'react-router-dom'
 import HilightText from '@/components/common/HilightText'
 import { Button } from '@/components/ui/button'

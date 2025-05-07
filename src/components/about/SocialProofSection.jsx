@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '../common/Container'
-import hands from '@/assets/images/aboutSocialSection.png'
-import Fill from '@/assets/images/Fill.png'
+import hands from '../../assets/images/aboutSocialSection.png'
+import Fill from '../../assets/images/Fill.png'
 
 const SocialProofSection = () => {
     return (

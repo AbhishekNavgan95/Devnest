@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import logo from '@/assets/logo/logo.png';
+import logo from '../../assets/logo/logo.png';
 import CategorySelectBox from '../navbar/CategorySelectBox';
 import { Link, NavLink } from 'react-router-dom';
 import { Button } from '../ui/button';

@@ -1,9 +1,9 @@
 import React from 'react'
 import Container from '../common/Container'
 import HilightText from '../common/HilightText'
-import AboutHero1 from '@/assets/images/aboutHero1.png'
-import AboutHero2 from '@/assets/images/aboutHero2.png'
-import Fill from '@/assets/images/Fill.png'
+import AboutHero1 from '../../assets/images/aboutHero1.png'
+import AboutHero2 from '../../assets/images/aboutHero2.png'
+import Fill from '../../assets/images/Fill.png'
 import { motion } from 'framer-motion'
 
 const HeaderSection = () => {

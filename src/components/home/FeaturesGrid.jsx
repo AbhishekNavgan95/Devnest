@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '../common/Container'
-import collaborativeCodingpng from '@/assets/images/collaborativeCodingpng.png'
-import communityForum from '@/assets/images/communityForum.png'
-import chatbotlogo from '@/assets/images/chatbotlogo.png'
+import collaborativeCodingpng from '../../assets/images/collaborativeCodingpng.png'
+import communityForum from '../../assets/images/communityForum.png'
+import chatbotlogo from '../../assets/images/chatbotlogo.png'
 
 const FeaturesGrid = () => {
     return (
