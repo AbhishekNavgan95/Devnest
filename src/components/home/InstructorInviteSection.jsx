@@ -1,8 +1,8 @@
 import React from 'react'
 import Container from '../common/Container'
 import HilightText from '../common/HilightText'
-import Instructor2 from '../../assets/images/instructor2.png'
-import Instructor1 from '../../assets/images/instructor1.png'
+import Instructor2 from '../../assets/images/Instructor2.png'
+import Instructor1 from '../../assets/images/Instructor2.png'
 import { Button } from '../ui/button'
 
 const InstructorInviteSection = () => {
