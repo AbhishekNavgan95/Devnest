@@ -13,7 +13,7 @@ import { MdOutlineCreateNewFolder } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { GrGroup } from "react-icons/gr";
 import { IoCodeSlash } from "react-icons/io5";
-
+import { LuFolderHeart } from "react-icons/lu";
 
 export const categories = [
   {
@@ -238,44 +238,56 @@ export const queryTypes = [
 
 export const commonDashboardRoutes = [
   {
-    title: 'Community',
-    route: '/dashboard/community',
-    icon: GrGroup
+    title: "Community",
+    route: "/dashboard/community",
+    icon: GrGroup,
   },
   {
-    title: 'CodeSpace',
-    route: '/dashboard/codespace',
-    icon: IoCodeSlash
+    title: "CodeSpace",
+    route: "/dashboard/codespace",
+    icon: IoCodeSlash,
   },
-]
+];
 
 export const userRoutes = {
   Student: [
-
-  ], 
-  Admin: [
-
+    {
+      title: "Profile",
+      route: "/dashboard/profile",
+      icon: FaRegUserCircle,
+    },
+    {
+      title: "Enrolled Courses",
+      route: "/dashboard/enrolled-courses",
+      icon: FaListUl,
+    },
+    {
+      title: "Wishlist",
+      route: "/dashboard/wishlist",
+      icon: LuFolderHeart,
+    },
   ],
+  Admin: [],
   Instructor: [
     {
-      title: 'Profile',
-      route: '/dashboard/profile',
-      icon: FaRegUserCircle
+      title: "Profile",
+      route: "/dashboard/profile",
+      icon: FaRegUserCircle,
     },
     {
-      title: 'My Courses',
-      route: '/dashboard/courses',
-      icon: FaListUl
+      title: "My Courses",
+      route: "/dashboard/courses",
+      icon: FaListUl,
     },
     {
-      title: 'Craete new Course',
-      route: '/dashboard/create',
-      icon: MdOutlineCreateNewFolder
+      title: "Craete new Course",
+      route: "/dashboard/create",
+      icon: MdOutlineCreateNewFolder,
     },
     {
-      title: 'Analytics',
-      route: '/dashboard/analytics',
-      icon: TbBrandGoogleAnalytics
-    }
-  ]
-}
+      title: "Analytics",
+      route: "/dashboard/analytics",
+      icon: TbBrandGoogleAnalytics,
+    },
+  ],
+};

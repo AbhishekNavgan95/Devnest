@@ -1,5 +1,5 @@
-import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
+import { create } from "zustand";
+import { persist } from "zustand/middleware";
 
 export const useUserStore = create(
   persist(
@@ -8,16 +8,20 @@ export const useUserStore = create(
       isLoggedIn: false,
 
       login: (userData) => {
-        set({ user: userData, isLoggedIn: true })
+        set({ user: userData, isLoggedIn: true });
+      },
+
+      setUser: (userData) => {
+        set({ user: userData });
       },
 
       logout: () => {
-        set({ user: null, isLoggedIn: false })
+        set({ user: null, isLoggedIn: false });
       },
     }),
     {
-      name: 'devnest-user', // localStorage key
+      name: "devnest-user", // localStorage key
       getStorage: () => localStorage, // use localStorage
     }
   )
-)
+);

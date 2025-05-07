@@ -60,7 +60,6 @@ const SignupForm = () => {
             toast({
                 title: 'Signup Successful',
                 description: 'Check your email to verify your account',
-                variant: 'success'
             })
         },
         onError: (error) => {

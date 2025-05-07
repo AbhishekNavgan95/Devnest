@@ -4,11 +4,10 @@ import { FaLinkedinIn } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FaFacebookF } from "react-icons/fa";
 import { FaInstagram } from "react-icons/fa";
-import Container from './Container';
 
 const Footer = () => {
   return (
-    <footer className='w-full py-14 bg-main-950'>
+    <footer className='w-full px-4 py-14 bg-main-950'>
       <div className='max-w-[1400px] mx-auto'>
         <div className='flex items-start justify-between gap-x-20'>
           {/* logo + links */}

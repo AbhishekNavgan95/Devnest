@@ -1,10 +1,11 @@
 'use client'
 import React, { useState } from 'react'
 import { MdKeyboardArrowDown } from "react-icons/md"
-import { categories } from '@/lib/data'
 import { motion, AnimatePresence } from 'framer-motion'
+import { Link } from 'react-router-dom'
 
-const CategorySelectBox = () => {
+const CategorySelectBox = ({ categories }) => {
+    
     const [menuOpen, setMenuOpen] = useState(false)
     const [activeCategory, setActiveCategory] = useState(null)
     const [submenu, setSubmenu] = useState([])
@@ -59,14 +60,12 @@ const CategorySelectBox = () => {
                                 {
                                     categories.map((category) => (
                                         <button
-                                            key={category.id}
+                                            key={category._id}
                                             onMouseOver={() => {
                                                 setActiveCategory(category)
                                                 setSubmenu(category.topics)
                                             }}
-                                            className={`px-4 py-2 cursor-pointer border-l-4 text-left w-full text-sm
-                        ${activeCategory?.name === category.name ? "border-main-400 bg-second-100 font-semibold" : "border-transparent"}
-                      `}
+                                            className={`px-4 py-2 cursor-pointer border-l-4 text-left w-full text-sm ${activeCategory?.name === category.name ? "border-main-400 bg-second-100 font-semibold" : "border-transparent"}`}
                                         >
                                             <div className="flex justify-between items-center text-nowrap gap-x-2">
                                                 {category.name}
@@ -88,13 +87,14 @@ const CategorySelectBox = () => {
                                     >
                                         {
                                             submenu.map((topic, index) => (
-                                                <div
+                                                <Link
+                                                    to={`/courses/${activeCategory?._id}/${topic._id}`}
                                                     key={index}
                                                     className='px-4 flex items-center justify-between text-nowrap gap-x-4 py-2 cursor-pointer border-l-4 border-transparent hover:border-main-400 hover:bg-second-100 text-sm'
                                                 >
-                                                    {topic}
+                                                    {topic.name}
                                                     <MdKeyboardArrowDown className='inline -rotate-90 text-xs' />
-                                                </div>
+                                                </Link>
                                             ))
                                         }
                                     </motion.div>

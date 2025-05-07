@@ -9,11 +9,12 @@ import { z } from 'zod';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import axios from 'axios';
-import { BASE_API_URL, BASE_URL } from '@/lib/utils';
+import { BASE_API_URL, BASE_URL, NODE_ENV } from '@/lib/utils';
 import { useMutation } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
 import { Link } from 'react-router-dom';
 import { useUserStore } from '@/stores/useUserStore';
+import { useAuthStore } from '@/stores/useAuthStore';
 
 const formSchema = z.object({
     email: z.string().email(),
@@ -30,6 +31,7 @@ const LoginForm = () => {
     const navigate = useNavigate()
     const { toast } = useToast()
     const { login: storeUserDataInState } = useUserStore()
+    const { setToken } = useAuthStore();
     const { mutate: login, isPending } = useMutation({
         mutationFn: loginfn,
         onSuccess: (data) => {
@@ -39,6 +41,7 @@ const LoginForm = () => {
                 description: 'You have been logged in successfully',
             })
             storeUserDataInState(data?.data)
+            setToken(data.token)
             navigate('/')
         },
         onError: (error) => {

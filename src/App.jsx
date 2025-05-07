@@ -16,6 +16,11 @@ import InstructorAnalytics from './pages/InstructorAnalytics'
 import Community from './pages/Community'
 import CodeSpace from './pages/CodeSpace'
 import Dashboard from './pages/Dashboard'
+import EnrolledCourses from './pages/EnrolledCourses'
+import WishList from './pages/WishList'
+import Courses from './pages/Courses'
+import CoursesLayout from './components/common/CoursesLayout'
+import CourseDetails from './pages/CourseDetails'
 
 const App = () => {
 
@@ -43,8 +48,15 @@ const App = () => {
         <Route path='/signup' element={<PublicRoutes><Signup /></PublicRoutes>} />
         <Route path='/verify/:token' element={<PublicRoutes><VerifyAccount /></PublicRoutes>} />
 
+        {/* courses */}
+        <Route path='/courses' element={<CoursesLayout />}>
+          <Route path=':category/:topic' element={<Courses />} />
+        </Route>
+
+        <Route path='/course-details/:courseId' element={<CourseDetails />} />
+
         {/* dashboard routes */}
-         <Route path='/dashboard' element={<Dashboard />}>
+        <Route path='/dashboard' element={<Dashboard />}>
 
           {/* profile */}
           <Route path='profile' element={
@@ -64,6 +76,20 @@ const App = () => {
           <Route path='create' element={
             <DashboardLayout>
               <CreateCourse />
+            </DashboardLayout>
+          } />
+
+          {/* Enrolled Courses */}
+          <Route path='enrolled-courses' element={
+            <DashboardLayout>
+              <EnrolledCourses />
+            </DashboardLayout>
+          } />
+
+          {/* Wishlist */}
+          <Route path='wishlist' element={
+            <DashboardLayout>
+              <WishList />
             </DashboardLayout>
           } />
 

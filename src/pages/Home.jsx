@@ -19,7 +19,7 @@ const getCourses = async () => {
 const Home = () => {
 
   const { user } = useUserStore();
-  console.log("user : ", user)
+  // console.log("user : ", user)
   const { data, isPending, inError } = useQuery({
     queryKey: ['courses'],
     queryFn: getCourses,
@@ -27,9 +27,9 @@ const Home = () => {
 
   // http://localhost:5173/eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hdmdhbmFiaGlzaGVrOTBAZ21haWwuY29tIiwiaWF0IjoxNzQ2MjU4NTc3LCJleHAiOjE3NDYyNjIxNzd9.5GxqathTQQHHfQa8xeIoKfcurbyVAUCCfdfx2H9N7LU
 
-  // if (!isPending) {
-  //   // console.log("data : ", data)
-  // }
+  if (!isPending) {
+    // console.log("data : ", data)
+  }
 
 
   useEffect(() => {

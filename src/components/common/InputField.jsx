@@ -22,10 +22,10 @@ const InputField = ({
 
   return (
     <span
-      className={`${className} bg-white flex items-center border border-dark-700 px-3 py-1 rounded-lg transition-all focus-within:ring-1 focus-within:ring-dark-500`}
+      className={`${className} bg-white flex items-center border border-dark-700 px-2 py-1 rounded-lg transition-all focus-within:ring-1 focus-within:ring-dark-500`}
     >
       {Icon && (
-        <span className={`px-1 text-xl ${disabled ? "text-dark-400" : "text-main-400"}`}>
+        <span className={`px-1 text-base lg:text-xl ${disabled ? "text-dark-400" : "text-main-400"}`}>
           {Icon}
         </span>
       )}
@@ -43,7 +43,7 @@ const InputField = ({
         onKeyDown={onKeyDown}
         id={id}
         disabled={disabled}
-        className="w-full bg-transparent placeholder:text-dark-700 text-dark-900 placeholder:text-sm text-lg bg-white !border-none outline-none focus-visible:ring-0 !focus:ring-0 !focus:outline-none"
+        className="w-full bg-transparent placeholder:text-dark-700 text-dark-900 placeholder:text-sm text-sm bg-white !border-none outline-none focus-visible:ring-0 !focus:ring-0 !focus:outline-none"
         {...(register ? register(name) : {})}
         {...props}
       />
