@@ -1,7 +1,7 @@
 import React from 'react'
 import Container from '../common/Container'
 import HilightText from '../common/HilightText'
-import Instructor2 from '../../assets/images/Instructor2.png'
+import Instructor2 from '../../assets/images/Instructor1.png'
 import Instructor1 from '../../assets/images/Instructor2.png'
 import { Button } from '../ui/button'
 

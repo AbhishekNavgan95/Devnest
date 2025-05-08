@@ -4,7 +4,7 @@ import { api } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import { FaRegListAlt } from "react-icons/fa";
 import { MdOndemandVideo } from "react-icons/md";
 import { PiStudentBold } from "react-icons/pi";
@@ -19,6 +19,9 @@ import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 import { useToast } from '@/hooks/use-toast'
 import FAQCarousel from '@/components/courseDetails/faqCarousel'
 import { FaCirclePlay } from "react-icons/fa6";
+import { useUserStore } from '@/stores/useUserStore';
+import { ToastAction } from '@/components/ui/toast';
+import { useCartStore } from '@/stores/useCartStore';
 
 const fetchCourseDetails = async (id) => {
     const res = await api.get('/course/getCourseDetails/' + id)
@@ -35,6 +38,9 @@ const CourseDetails = () => {
     const videoRef = useRef(null)
     const { courseId } = useParams()
     const { toast } = useToast();
+    const navigate = useNavigate();
+    const { user, isLoggedIn } = useUserStore();
+    const { addToCart, removeFromCart, cart } = useCartStore()
 
     const { data: course, isPending } = useQuery({
         queryKey: ['courseDetails', courseId],
@@ -53,6 +59,47 @@ const CourseDetails = () => {
         if (videoRef.current) {
             videoRef.current.play()
             setShowPlayButton(false)
+        }
+    }
+
+    const handleSave = () => {
+        if (!isLoggedIn) {
+            toast({
+                title: "Login required",
+                description: 'Failed to save, login is required',
+                action: (
+                    <ToastAction
+                        onClick={() => {
+                            navigate('/login')
+                        }}
+                        altText="login"
+                    >Login</ToastAction>
+                ),
+            })
+            return
+        }
+
+        if (user?.accountType === 'Instructor') {
+            toast({
+                title: "Instructor can't save course",
+                description: 'Failed to save, instructor can\'t save course',
+            })
+            return;
+        }
+
+        const alreadyExist = cart.find((item) => item._id === course._id)
+        if (alreadyExist) {
+            removeFromCart(course._id)
+            toast({
+                title: "Course removed from saved",
+                description: 'Course removed from saved successfully',
+            })
+        } else {
+            addToCart(course)
+            toast({
+                title: "Course saved",
+                description: 'Course saved successfully',
+            })
         }
     }
 
@@ -115,9 +162,14 @@ const CourseDetails = () => {
                                 <IoShareSocialSharp />
                             </button>
 
-                            <button className='text-2xl '>
-                                <FaRegBookmark />
-                            </button>
+                            {
+                                user?.accountType === 'Student' &&
+                                <button onClick={handleSave} className='text-2xl '>
+                                    {
+                                        !cart?.find((item) => item._id === course._id) ? <FaRegBookmark /> : <FaBookmark className='text-main-400' />
+                                    }
+                                </button>
+                            }
                         </div>
                         <Button size='lg'>
                             Enroll Now

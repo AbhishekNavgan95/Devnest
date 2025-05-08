@@ -66,8 +66,7 @@ const Profile = () => {
 
   return (
     <div className='w-full'>
-      <h4 className='text-xl md:text-3xl font-medium mb-4 md:mb-8'>Profile</h4>
-
+      {/* <h4 className='text-xl md:text-3xl font-medium mb-4 md:mb-8'>Profile</h4> */}
       <div className='w-full relative'>
         {
           !user?.banner?.url ? (
