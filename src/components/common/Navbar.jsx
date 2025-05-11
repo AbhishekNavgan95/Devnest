@@ -49,7 +49,7 @@ const Navbar = () => {
 
   useEffect(() => {
     if (!topicsPending) {
-      setTopics(topics.data)
+      setTopics(topics?.data)
     }
   }, [topics, topicsPending])
 

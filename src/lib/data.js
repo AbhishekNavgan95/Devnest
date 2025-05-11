@@ -14,6 +14,13 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { GrGroup } from "react-icons/gr";
 import { IoCodeSlash } from "react-icons/io5";
 import { LuFolderHeart } from "react-icons/lu";
+import { MdOutlineGroup } from "react-icons/md";
+import { IoLogoReact } from "react-icons/io5";
+import { GiArtificialIntelligence } from "react-icons/gi";
+import { MdDataArray } from "react-icons/md";
+import { FaMixcloud } from "react-icons/fa";
+import { TbDeviceMobilePause } from "react-icons/tb";
+import { HiOutlineViewGridAdd } from "react-icons/hi";
 
 export const categories = [
   {
@@ -257,7 +264,7 @@ export const userRoutes = {
       icon: FaRegUserCircle,
     },
     {
-      title: "Enrolled Courses",
+      title: "My Courses",
       route: "/dashboard/enrolled-courses",
       icon: FaListUl,
     },

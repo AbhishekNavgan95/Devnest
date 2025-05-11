@@ -22,6 +22,7 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { useUserStore } from '@/stores/useUserStore';
 import { ToastAction } from '@/components/ui/toast';
 import { useCartStore } from '@/stores/useCartStore';
+import BuyCourseButton from '@/components/courseDetails/BuyCourseButton';
 
 const fetchCourseDetails = async (id) => {
     const res = await api.get('/course/getCourseDetails/' + id)
@@ -163,7 +164,7 @@ const CourseDetails = () => {
                             </button>
 
                             {
-                                user?.accountType === 'Student' &&
+                                user?.accountType === 'Student' && !user?.courses?.find((c) => c._id === courseId) &&
                                 <button onClick={handleSave} className='text-2xl '>
                                     {
                                         !cart?.find((item) => item._id === course._id) ? <FaRegBookmark /> : <FaBookmark className='text-main-400' />
@@ -171,9 +172,9 @@ const CourseDetails = () => {
                                 </button>
                             }
                         </div>
-                        <Button size='lg'>
-                            Enroll Now
-                        </Button>
+                        {
+                            user?.accountType === 'Student' && !user?.courses?.find((c) => c._id === courseId) ? <BuyCourseButton course={course} /> : <Button onClick={() => navigate('/dashboard/enrolled-courses')}>View course</Button>
+                        }
                     </div>
                 </div>
             </div>

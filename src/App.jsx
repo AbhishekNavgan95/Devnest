@@ -21,6 +21,7 @@ import WishList from './pages/WishList'
 import Courses from './pages/Courses'
 import CoursesLayout from './components/common/CoursesLayout'
 import CourseDetails from './pages/CourseDetails'
+import { SocketProvider } from './contexts/SocketContext'
 
 const App = () => {
 
@@ -103,14 +104,18 @@ const App = () => {
           {/* Community */}
           <Route path='community' element={
             <DashboardLayout>
-              <Community />
+              <SocketProvider>
+                <Community />
+              </SocketProvider>
             </DashboardLayout>
           } />
 
           {/* CodeSpace */}
           <Route path='codespace' element={
             <DashboardLayout>
-              <CodeSpace />
+              <SocketProvider>
+                <CodeSpace />
+              </SocketProvider>
             </DashboardLayout>
           } />
 

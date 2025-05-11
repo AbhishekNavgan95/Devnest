@@ -74,10 +74,10 @@ const DashboardSidebar = () => {
 
             <div className='w-full my-2 h-[1px] bg-dark-400'></div>
 
-            <div className='text-black rounded-md font-medium py-2 px-4 flex gap-x-4 items-center text-sm md:text-base'>
+            <button onClick={() => setConfirmationModal(true)} className='text-black rounded-md font-medium py-2 px-4 flex gap-x-4 items-center text-sm md:text-base'>
                 <MdLogout />
-                <button onClick={() => setConfirmationModal(true)} className='text-start'>Logout</button>
-            </div>
+                <span className='text-start'>Logout</span>
+            </button>   
 
             {
                 confirmationModal && (

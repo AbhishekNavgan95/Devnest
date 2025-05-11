@@ -47,7 +47,7 @@ const HeroSection = () => {
                         animate={{ opacity: 1, x: 0 }}
                         transition={{ duration: 0.6, ease: 'easeOut' }}
                     >
-                        <h2 className='text-main-400 text-xl font-semibold'>Welcome to Devnest</h2>
+                        <h2 className='text-main-400 text-xl font-semibold'>Turn Passion into Progress</h2>
                         <h1 className='text-5xl leading-relaxed font-bold'>
                             We help you reach the <HilightText className={'text-5xl'}>milestones</HilightText> you aim for.
                         </h1>

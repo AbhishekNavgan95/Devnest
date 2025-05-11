@@ -12,7 +12,7 @@ const CourseCard = ({
     const { removeFromCart } = useCartStore()
 
     const navigate = useNavigate()
-    console.log("course : ", course)
+    // console.log("course : ", course)
 
     return (
         <div className='border flex items-center gap-x-2 rounded-md overflow-hidden border-dark-600'>
