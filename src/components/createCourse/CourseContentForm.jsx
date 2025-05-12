@@ -183,7 +183,6 @@ const CourseContentForm = () => {
 
   return (
     <>
-
       <div className='w-full py-4 px-4 md:px-8 mb-4 bg-white min-h-[200px] rounded-md border border-dark-600' >
         <h4 className='text-xl font-medium'>Create module</h4>
         <form onSubmit={handleSubmit(submitHandler)} className='flex flex-col mt-4 gap-y-4'>

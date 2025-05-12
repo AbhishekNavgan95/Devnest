@@ -142,18 +142,18 @@ const Community = () => {
               <h4 className="py-4 px-4 font-medium text-lg border-b border-dark-500 w-full">
                 Community Chat Guidelines
               </h4>
-              <div className="p-4 px-8 text-base space-y-1">
-                <p>• Be respectful and polite to everyone in the community.</p>
-                <p>• Stay on topic — post in the appropriate channel.</p>
-                <p>• Avoid spamming or repetitive messages.</p>
-                <p>• Do not share personal or sensitive information.</p>
-                <p>• Use inclusive and professional language.</p>
-                <p>• Help others constructively — no mocking or belittling.</p>
-                <p>• Avoid off-topic promotions or self-advertisements.</p>
-                <p>• Report inappropriate behavior to moderators.</p>
-                <p>• Keep discussions healthy and educational.</p>
-                <p>• Follow DevNest's terms of use and community standards.</p>
-              </div>
+              <ul className="p-4 px-8 text-base space-y-2 list-inside list-disc">
+                <li>Be respectful and polite to everyone in the community.</li>
+                <li>Stay on topic — post in the appropriate channel.</li>
+                <li>Avoid spamming or repetitive messages.</li>
+                <li>Do not share personal or sensitive information.</li>
+                <li>Use inclusive and professional language.</li>
+                <li>Help others constructively — no mocking or belittling.</li>
+                <li>Avoid off-topic promotions or self-advertisements.</li>
+                <li>Report inappropriate behavior to moderators.</li>
+                <li>Keep discussions healthy and educational.</li>
+                <li>Follow DevNest's terms of use and community standards.</li>
+              </ul>
             </div>
           )
         }

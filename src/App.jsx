@@ -22,13 +22,14 @@ import Courses from './pages/Courses'
 import CoursesLayout from './components/common/CoursesLayout'
 import CourseDetails from './pages/CourseDetails'
 import { SocketProvider } from './contexts/SocketContext'
+import ViewCourse from './pages/ViewCourse'
 
 const App = () => {
 
   const location = useLocation();
   let showHeader = true;
   let showFooter = true;
-  if (location.pathname.includes('dashboard')) {
+  if (location.pathname.includes('dashboard') || location.pathname.includes('view-course')) {
     showHeader = false;
     showFooter = false;
   }
@@ -55,6 +56,7 @@ const App = () => {
         </Route>
 
         <Route path='/course-details/:courseId' element={<CourseDetails />} />
+        <Route path='/view-course/:id' element={<ViewCourse />} />
 
         {/* dashboard routes */}
         <Route path='/dashboard' element={<Dashboard />}>

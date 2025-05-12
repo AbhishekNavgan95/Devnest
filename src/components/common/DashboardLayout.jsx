@@ -7,7 +7,7 @@ const DashboardLayout = ({
 }) => {
     return (
         <ProtectedRoutes>
-            <div className='flex flex-col lg:flex-row min-h-screen w-full'>
+            <div className='flex flex-col lg:flex-row h-screen w-full'>
                 <DashboardSidebar />
                 <div className='overflow-y-auto w-full p-4 lg:p-14'>
                     {children}

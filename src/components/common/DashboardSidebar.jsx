@@ -55,29 +55,31 @@ const DashboardSidebar = () => {
                 ))
             }
 
-            <div className='w-full my-2 h-[1px] bg-dark-400'></div>
+            <div className='w-full hidden lg:block my-2 h-[1px] bg-dark-400'></div>
 
-            {
-                commonDashboardRoutes?.map((route, index) => (
-                    <NavLink
-                        key={index}
-                        to={route.route}
-                        className={({ isActive }) =>
-                            `${isActive ? 'bg-dark-300 border-dark-600' : "border-transparent"} border text-black rounded-md font-medium py-2 px-4 flex gap-x-4 items-center text-base`
-                        }
-                    >
-                        <route.icon className='text-base' />
-                        {route?.title}
-                    </NavLink>
-                ))
-            }
+            <div className='hidden lg:block '>
+                {
+                    commonDashboardRoutes?.map((route, index) => (
+                        <NavLink
+                            key={index}
+                            to={route.route}
+                            className={({ isActive }) =>
+                                `${isActive ? 'bg-dark-300 border-dark-600' : "border-transparent"} border text-black rounded-md font-medium py-2 px-4 flex gap-x-4 items-center text-base`
+                            }
+                        >
+                            <route.icon className='text-base' />
+                            {route?.title}
+                        </NavLink>
+                    ))
+                }
+            </div>
 
             <div className='w-full my-2 h-[1px] bg-dark-400'></div>
 
             <button onClick={() => setConfirmationModal(true)} className='text-black rounded-md font-medium py-2 px-4 flex gap-x-4 items-center text-sm md:text-base'>
                 <MdLogout />
                 <span className='text-start'>Logout</span>
-            </button>   
+            </button>
 
             {
                 confirmationModal && (

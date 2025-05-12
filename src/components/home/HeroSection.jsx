@@ -49,7 +49,7 @@ const HeroSection = () => {
                     >
                         <h2 className='text-main-400 text-xl font-semibold'>Turn Passion into Progress</h2>
                         <h1 className='text-5xl leading-relaxed font-bold'>
-                            We help you reach the <HilightText className={'text-5xl'}>milestones</HilightText> you aim for.
+                            We help you reach the <HilightText className={'text-5xl'}>milestones</HilightText> you aim for
                         </h1>
                         <img className='w-full mt-12 rounded-sm' src={hero1} alt="" />
                     </motion.div>

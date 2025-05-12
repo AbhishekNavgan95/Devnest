@@ -3,13 +3,15 @@ import Container from '../common/Container'
 import collaborativeCodingpng from '../../assets/images/collaborativeCodingpng.png'
 import communityForum from '../../assets/images/communityForum.png'
 import chatbotlogo from '../../assets/images/chatbotlogo.png'
+import progress from '../../assets/images/progress.png'
 
 const FeaturesGrid = () => {
     return (
         <Container>
             <div className='p-14 grid grid-cols-3 gap-8'>
-                <div className='p-8 bg-main-400 rounded-2xl'>
+                <div className='p-8 bg-main-400 rounded-2xl relative overflow-hidden'>
                     <h5 className='text-3xl text-dark-100 font-semibold leading-snug'>Empower your development journey</h5>
+                    <img src={progress} className='absolute right-0 -bottom-8 mix-blend-overlay opacity-50' alt="" />
                 </div>
 
                 <div className='w-full col-span-2'>

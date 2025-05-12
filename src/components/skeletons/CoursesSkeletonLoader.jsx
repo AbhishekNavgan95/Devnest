@@ -10,7 +10,7 @@ const CourseSkeletonLoader = () => {
                     <div className='grid grid-cols-3 mt-14 gap-x-4'>
                         {
                             Array.from({ length: 3 }).map((_, i) => (
-                                <div className='relative border border-dark-300 bg-dark-100 animate-pulse flex flex-col rounded-lg'>
+                                <div key={i} className='relative border border-dark-300 bg-dark-100 animate-pulse flex flex-col rounded-lg'>
                                     {/* Image placeholder */}
                                     <div className='w-full aspect-video bg-dark-200 rounded-t-md' />
 
@@ -50,7 +50,7 @@ const CourseSkeletonLoader = () => {
                     <div className='grid grid-cols-3 mt-14 gap-x-4'>
                         {
                             Array.from({ length: 3 }).map((_, i) => (
-                                <div className='relative border border-dark-300 bg-dark-100 animate-pulse flex flex-col rounded-lg'>
+                                <div key={i} className='relative border border-dark-300 bg-dark-100 animate-pulse flex flex-col rounded-lg'>
                                     {/* Image placeholder */}
                                     <div className='w-full aspect-video bg-dark-200 rounded-t-md' />
 

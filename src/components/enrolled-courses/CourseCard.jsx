@@ -10,7 +10,7 @@ const CourseCard = ({ course }) => {
 
     const totalVideos = course?.courseContent?.reduce((acc, module) => acc + (module?.subSection?.length || 0), 0);
 
-    const progressPercent = totalVideos > 0 ? Math.floor((completedLectures / totalVideos) * 100) : 0;
+    const progressPercent = totalVideos > 0 ? Math.round((completedLectures / totalVideos) * 100) : 0;
 
     return (
         <Link
@@ -26,10 +26,13 @@ const CourseCard = ({ course }) => {
                 </p>
 
                 <div className="mt-3">
-                    <p className="text-xs mb-1">Progress: {progressPercent}%</p>
-                    <div className="w-full h-2 bg-gray-200 rounded-full">
+                    <div className='flex text-xs justify-between mb-1'>
+                        <p>Progress: </p>
+                        <p>{progressPercent}%</p>
+                    </div>
+                    <div className="w-full h-1 bg-gray-200 rounded-full">
                         <div
-                            className="h-2 bg-main-400 rounded-full transition-all duration-300"
+                            className="h-1 bg-main-400 rounded-full transition-all duration-300"
                             style={{ width: `${progressPercent}%` }}
                         ></div>
                     </div>
