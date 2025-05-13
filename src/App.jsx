@@ -23,13 +23,14 @@ import CoursesLayout from './components/common/CoursesLayout'
 import CourseDetails from './pages/CourseDetails'
 import { SocketProvider } from './contexts/SocketContext'
 import ViewCourse from './pages/ViewCourse'
+import JoinCodeSpace from './pages/JointCodeSpace'
 
 const App = () => {
 
   const location = useLocation();
   let showHeader = true;
   let showFooter = true;
-  if (location.pathname.includes('dashboard') || location.pathname.includes('view-course')) {
+  if (location.pathname.includes('dashboard') || location.pathname.includes('view-course') || location.pathname.includes('/code/')) {
     showHeader = false;
     showFooter = false;
   }
@@ -57,6 +58,13 @@ const App = () => {
 
         <Route path='/course-details/:courseId' element={<CourseDetails />} />
         <Route path='/view-course/:id' element={<ViewCourse />} />
+
+        {/* Join CodeSpace */}
+        <Route path='/code/:codeSpaceId' element={
+          <SocketProvider>
+            <JoinCodeSpace />
+          </SocketProvider>
+        } />
 
         {/* dashboard routes */}
         <Route path='/dashboard' element={<Dashboard />}>
@@ -120,9 +128,6 @@ const App = () => {
               </SocketProvider>
             </DashboardLayout>
           } />
-
-
-
         </Route>
       </Routes>
 
