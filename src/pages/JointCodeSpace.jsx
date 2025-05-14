@@ -112,8 +112,10 @@ const JoinCodeSpace = () => {
         })
 
         // get code update
-        socket.on("codeUpdated", (code) => {
-            setCodeSpace((prev) => ({ ...prev, code: code }))
+        socket.on("codeUpdated", (data) => {
+            // don't update the local code to the writers editor
+            if (data?.userId === user?._id) return;
+            setCodeSpace((prev) => ({ ...prev, code: data.code }))
         })
 
         // get permissions update 
@@ -169,6 +171,8 @@ const JoinCodeSpace = () => {
     }
 
     const handleCodeChange = (code) => {
+        if(!editAllowed) return;
+
         socket.emit("updateCode", {
             roomId: codeSpaceId,
             userId: user._id,
