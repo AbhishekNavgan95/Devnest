@@ -1,4 +1,4 @@
-import CourseEngagementTable from '@/components/instructorAnalytics/courseEngagementTable';
+import CourseEngagementTable from '@/components/instructorAnalytics/CourseEngagementTable';
 import CourseStatusChart from '@/components/instructorAnalytics/CourseStatusChart';
 import RatingChart from '@/components/instructorAnalytics/RatingChart';
 import { RevenueChart } from '@/components/instructorAnalytics/RevenueChart';
