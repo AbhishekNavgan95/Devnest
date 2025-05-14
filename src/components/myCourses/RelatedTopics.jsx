@@ -20,7 +20,7 @@ const RelatedTopics = ({
                                     <span key={topic?._id} onClick={() => {
                                         navigate(`/courses/${category}/${topic?._id}`)
                                         window.scrollTo(0, 0)
-                                    }} className='bg-white border hover:shadow-md border-dark-700 py-1 md:py-2 cursor-pointer text-dark-950 px-4 md:px-8 rounded-md text-base'>{topic?.name}</span>
+                                    }} className='bg-white border shadow-sm shadow-transparent hover:shadow-dark-700 border-dark-600 py-1 md:py-2 cursor-pointer text-dark-900 px-4 md:px-8 rounded-md text-base'>{topic?.name}</span>
                                 ))
                             }
                         </div>

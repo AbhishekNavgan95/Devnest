@@ -368,7 +368,9 @@ const CourseDetails = () => {
                             <div>
                                 <img src={course?.instructor?.image?.url} className='w-28 rounded-full border border-dark-700' alt="" />
                             </div>
-                            <h5 className='mt-2 font-medium'>{course?.instructor?.firstName} {course?.instructor?.lastName}</h5>
+                            <button onClick={() => {
+                                navigate('/instructor/'+course?.instructor?._id)
+                            }} className='mt-2 font-medium cursor-pointer hover:underline'>{course?.instructor?.firstName} {course?.instructor?.lastName}</button>
                             <p className='text-xs text-center w-[80%]'>{course?.instructor?.additionalDetails?.experience}</p>
                             {course?.instructor?.additionalDetails?.niche?.length > 0 && (
                                 <div className='flex justify-center items-center gap-2 mt-2 flex-wrap'>

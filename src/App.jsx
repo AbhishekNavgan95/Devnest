@@ -24,6 +24,7 @@ import CourseDetails from './pages/CourseDetails'
 import { SocketProvider } from './contexts/SocketContext'
 import ViewCourse from './pages/ViewCourse'
 import JoinCodeSpace from './pages/JointCodeSpace'
+import InstructorProfile from './pages/InstructorProfile'
 
 const App = () => {
 
@@ -58,6 +59,7 @@ const App = () => {
 
         <Route path='/course-details/:courseId' element={<CourseDetails />} />
         <Route path='/view-course/:id' element={<ViewCourse />} />
+        <Route path='/instructor/:id' element={<InstructorProfile />} /> 
 
         {/* Join CodeSpace */}
         <Route path='/code/:codeSpaceId' element={

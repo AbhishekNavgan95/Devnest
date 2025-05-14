@@ -4,7 +4,7 @@ import { persist } from "zustand/middleware";
 export const useTopicsStore = create(
   persist(
     (set) => ({
-      topics: null,
+      topics: [],
 
       setTopics: (topics) => {
         set({ topics: topics });
