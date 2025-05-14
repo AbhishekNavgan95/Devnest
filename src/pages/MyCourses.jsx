@@ -29,7 +29,7 @@ const MyCourses = () => {
 
         <div className='flex justify-center gap-x-4 items-center'>
 
-          <div className='py-1 md:py-2 px-4 md:px-8 border border-dark-600 bg-second-100 rounded-md flex justify-center items-end gap-x-2'>
+          <div className='py-1 md:py-2 px-4 md:px-8 border border-dark-600 bg-second-100 rounded-md flex justify-center items-center gap-x-2'>
             <p className='text-2xl font-bold text-main-400'>
               {
                 data?.data?.length
@@ -40,7 +40,7 @@ const MyCourses = () => {
             </span>
           </div>
 
-          <div className='py-1 md:py-2 px-4 md:px-8 border border-dark-600 bg-second-100 rounded-md flex justify-center  items-end gap-x-2'>
+          <div className='py-1 md:py-2 px-4 md:px-8 border border-dark-600 bg-second-100 rounded-md flex justify-center items-center gap-x-2'>
             <p className='text-2xl font-bold text-main-400'>
               {
                 totalStudents

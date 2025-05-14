@@ -16,6 +16,7 @@ import { useToast } from '@/hooks/use-toast';
 import EditorComponent from '@/components/codespace/Editor';
 import ParticipentList from '@/components/codespace/ParticipentList';
 import Chatbox from '@/components/codespace/ChatBox';
+import ConfirmationModal from '@/components/common/ConfirmationModal';
 
 const languages = ['javascript', 'python', 'html', 'css', 'json', 'typescript'];
 
@@ -23,6 +24,7 @@ const JoinCodeSpace = () => {
     const [codeSpace, setCodeSpace] = useState(null);
     const [chatModalOpen, setChatModalOpen] = useState(false);
     const [editAllowed, setEditAllowed] = useState(false);
+    const [modalData, setModalData] = useState()
 
     const { codeSpaceId } = useParams();
     const { socket } = useSocket();
@@ -171,7 +173,7 @@ const JoinCodeSpace = () => {
     }
 
     const handleCodeChange = (code) => {
-        if(!editAllowed) return;
+        if (!editAllowed) return;
 
         socket.emit("updateCode", {
             roomId: codeSpaceId,
@@ -203,7 +205,16 @@ const JoinCodeSpace = () => {
                 <div className='flex justify-between items-center'>
                     <button
                         onClick={() => {
-                            navigate(-1)
+                            setModalData({
+                                heading: "Are you sure you want to leave the Codespace?",
+                                subheading: "You have to rejoin the Codespace again",
+                                onConfirm: () => {
+                                    navigate(-1);
+                                },
+                                onClose: () => {
+                                    setModalData(null)
+                                }
+                            })
                         }}
                         className='text-dark-900 capitalize flex font-semibold text-xl items-center px-2 py-2 gap-x-3'
                     >
@@ -275,6 +286,9 @@ const JoinCodeSpace = () => {
                     </div>
                 </div>
             </div>
+            {
+                modalData && <ConfirmationModal {...modalData} />
+            }
         </div>
     );
 };

@@ -250,7 +250,7 @@ export const commonDashboardRoutes = [
     icon: GrGroup,
   },
   {
-    title: "CodeSpace",
+    title: "Codespace",
     route: "/dashboard/codespace",
     icon: IoCodeSlash,
   },

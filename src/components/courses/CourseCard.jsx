@@ -121,11 +121,11 @@ const CourseCard = ({ course }) => {
         <div className='flex items-center mt-2 gap-x-1'>
           <div className='flex gap-x-1 items-center font-semibold'>
             <MdOutlineCurrencyRupee className='text-base' />
-            <p>{course?.price}</p>
+            <p>{course?.actualPrice}</p>
           </div>
           <div className='flex line-through text-sm items-center text-dark-700'>
             <MdOutlineCurrencyRupee className='text-base' />
-            <span>{course?.actualPrice}</span>
+            <span>{course?.price}</span>
           </div>
         </div>
 

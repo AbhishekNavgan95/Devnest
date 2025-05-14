@@ -16,8 +16,6 @@ const TrendingCourses = () => {
         queryFn: fetchTrendingCourses,
     })
 
-    console.log("data: ", data)
-
     return (
         <div className='mb-14'>
             <Container>

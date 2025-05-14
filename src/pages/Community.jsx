@@ -171,25 +171,25 @@ const Message = ({ message, user }) => {
 
   return (
     <div
-      className={`flex items-start gap-2 md:gap-3 ${isOwnMessage ? "justify-end" : ""
+      className={`flex justify-start items-start gap-x-2 ${isOwnMessage ? "flex-row-reverse" : "flex-row justify-start"
         }`}
     >
-      {!isOwnMessage && (
+      {/* {!isOwnMessage && ( */}
         <img
           src={message?.sender?.image?.url}
           alt="user"
-          className="w-6 h-6 rounded-full border border-gray-300"
+          className="w-6 h-6 rounded-full border border-gray-600"
         />
-      )}
+      {/* )} */}
 
-      <div className="bg-dark-100 max-w-sm px-4 py-1 rounded-lg text-richblack-900">
-        <p className="text-[10px] md:text-xs font-thin">
+      <div className="bg-dark-100 max-w-sm px-4 py-1 rounded-lg text-dark-900 border border-dark-600">
+        <p className="text-[8px] md:text-xs font-thin text-dark-800">
           {message?.sender?.firstName} {message?.sender?.lastName}
         </p>
-        <p style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }} className="text-sm md:text-base mb-1 font-medium">
+        <p style={{ wordWrap: 'break-word', whiteSpace: 'pre-wrap' }} className="text-sm md:text-base my-1 font-medium">
           {message.content}
         </p>
-        <p className="text-[10px] md:text-xs text-right text-richblack-700">
+        <p className="text-[10px] md:text-xs text-right text-dark-700">
           {time}
         </p>
       </div>

@@ -107,8 +107,8 @@ const CourseCard = ({
                         </p>
                     </div>
                     <p className='flex gap-x-1 items-center font-semibold'>
-                        <MdOutlineCurrencyRupee className='text-base ' /> {course?.price}
-                        <span className='text-xs text-dark-600 line-through'>{course?.actualPrice}</span>
+                        <MdOutlineCurrencyRupee className='text-base ' /> {course?.actualPrice}
+                        <span className='text-xs text-dark-600 line-through'>{course?.price}</span>
                     </p>
                 </div>
 
