@@ -25,15 +25,19 @@ import { SocketProvider } from './contexts/SocketContext'
 import ViewCourse from './pages/ViewCourse'
 import JoinCodeSpace from './pages/JointCodeSpace'
 import InstructorProfile from './pages/InstructorProfile'
+import ChatBot from './components/common/ChatBot'
 
 const App = () => {
 
   const location = useLocation();
   let showHeader = true;
   let showFooter = true;
+  let showChatBot = true;
+
   if (location.pathname.includes('dashboard') || location.pathname.includes('view-course') || location.pathname.includes('/code/')) {
     showHeader = false;
     showFooter = false;
+    showChatBot = false;
   }
 
   return (
@@ -41,6 +45,11 @@ const App = () => {
       {
         showHeader && <Navbar />
       }
+
+      {
+        showChatBot && <ChatBot />
+      }
+
       <Routes>
 
         {/* public routes */}
@@ -59,7 +68,7 @@ const App = () => {
 
         <Route path='/course-details/:courseId' element={<CourseDetails />} />
         <Route path='/view-course/:id' element={<ViewCourse />} />
-        <Route path='/instructor/:id' element={<InstructorProfile />} /> 
+        <Route path='/instructor/:id' element={<InstructorProfile />} />
 
         {/* Join CodeSpace */}
         <Route path='/code/:codeSpaceId' element={

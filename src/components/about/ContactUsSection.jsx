@@ -9,7 +9,7 @@ import ContactUsForm from './ContactUsForm';
 const ContactUsSection = () => {
     return (
         <Container>
-            <div className='pt-14 pb-24 w-full flex gap-x-14'>
+            <div id='ContactUs' className='pt-14 pb-24 w-full flex gap-x-14'>
                 {/* links */}
                 <div className='w-[50%] my-4'>
                     <h4 className='text-4xl font-medium mb-4'>Get in touch with us</h4>
