@@ -23,10 +23,10 @@ const TopRatedCourses = ({ data }) => {
 
     return (
         <div>
-            <h3 className='text-3xl font-medium border-b pb-6 border-dark-700'>Top rated courses in <span className='text-main-400'>{currentTopic?.name}</span></h3>
+            <h3 className='text-xl md:text-3xl font-medium border-b pb-4 md:pb-6 border-dark-700'>Top rated courses in <span className='text-main-400'>{currentTopic?.name}</span></h3>
             {
                 data?.length > 0 ? (
-                    <div className='mt-6 w-full'>
+                    <div className='md:mt-6 mt-4 w-full'>
                         <Carousel
                             plugins={[plugin.current]}
                             className="w-full"
@@ -35,15 +35,15 @@ const TopRatedCourses = ({ data }) => {
                         >
                             <CarouselContent>
                                 {data.map((course, index) => (
-                                    <CarouselItem className="pl-1 md:basis-1/2 lg:basis-1/3 xl:basis-1/4 " key={index}>
-                                        <div className="p-1">
-                                            <CourseCard course={course} />
-                                        </div>
+                                    <CarouselItem className="md:basis-1/2 lg:basis-1/3 xl:basis-1/4" key={index}>
+                                        <CourseCard course={course} />
                                     </CarouselItem>
                                 ))}
                             </CarouselContent>
-                            <CarouselPrevious />
-                            <CarouselNext />
+                            <div className='hidden md:block'>
+                                <CarouselPrevious />
+                                <CarouselNext />
+                            </div>
                         </Carousel>
                     </div>
                 ) : <div className='flex items-center justify-center h-[200px]'>

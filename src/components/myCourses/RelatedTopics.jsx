@@ -10,8 +10,8 @@ const RelatedTopics = ({
 
     return (
         <div>
-            <h3 className='text-3xl font-medium border-b pb-6 border-dark-700'>Related Categories</h3>
-            <div className='mt-6'>
+            <h3 className='text-xl md:text-3xl font-medium border-b pb-4 md:pb-6 border-dark-700'>Related Categories</h3>
+            <div className='md:mt-6 mt-4'>
                 {
                     data?.length > 0 ? (
                         <div className='flex flex-wrap gap-2 md:gap-4'>
@@ -20,7 +20,7 @@ const RelatedTopics = ({
                                     <span key={topic?._id} onClick={() => {
                                         navigate(`/courses/${category}/${topic?._id}`)
                                         window.scrollTo(0, 0)
-                                    }} className='bg-white border shadow-sm shadow-transparent hover:shadow-dark-700 border-dark-600 py-1 md:py-2 cursor-pointer text-dark-900 px-4 md:px-8 rounded-md text-base'>{topic?.name}</span>
+                                    }} className='bg-white border shadow-sm shadow-transparent hover:shadow-dark-700 border-dark-600 py-1 md:py-2 cursor-pointer text-dark-900 px-4 md:px-8 rounded-md text-xs md:text-base'>{topic?.name}</span>
                                 ))
                             }
                         </div>

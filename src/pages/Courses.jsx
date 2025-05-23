@@ -43,19 +43,20 @@ const Courses = () => {
                 <div >
                     <TopRatedCourses data={data?.data?.topRatedCourses} />
                 </div>
-                <div className='mt-14'>
+                
+                <div className='md:mt-14 mt-6'>
                     <RecentCourses data={data?.data?.recentCourses} />
                 </div>
 
-                <div className='mt-14'>
+                <div className='md:mt-14 mt-6'>
                     <AllCoursesGrid data={data?.data?.allCourses} />
                 </div>
 
-                <div className='mt-14'>
+                <div className='md:mt-14 mt-6'>
                     <Instructors data={data?.data?.instructorsWithSameNiche} />
                 </div>
 
-                <div className='mt-14'>
+                <div className='md:mt-14 mt-6'>
                     <RelatedTopics data={currentCategory?.topics} />
                 </div>
 
