@@ -20,16 +20,16 @@ const TrendingCourses = () => {
         <div className='mb-14'>
             <Container>
                 <div className=''>
-                    <h3 className='text-2xl md:text-3xl lg:text-4xl font-medium mb-8'>Currently trending on <span className='text-main-400'>Devnest</span></h3>
+                    <h3 className='text-2xl text-center lg:text-start md:text-3xl lg:text-4xl font-medium mb-8'>Currently trending on <span className='text-main-400'>Devnest</span></h3>
 
-                    {isPending ? <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+                    {isPending ? <div className='grid px-6 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                         {
                             Array.from({ length: 4 }).map((_, index) => (
                                 <div key={index} className='w-full h-[340px] bg-dark-300 animate-pulse rounded-md'></div>
                             ))
                         }
                     </div>
-                        : <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
+                        : <div className='grid px-6 lg:px-0 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'>
                             {
                                 data?.data?.map((course, index) => (
                                     <CourseCard key={course?._id} course={course} />

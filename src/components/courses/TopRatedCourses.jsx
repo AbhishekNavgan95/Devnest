@@ -1,4 +1,3 @@
-import { useCategoryStore } from '@/stores/useCategoryStore';
 import { useTopicsStore } from '@/stores/useTopicsStore';
 import React from 'react'
 import { useParams } from 'react-router-dom'
@@ -20,7 +19,7 @@ const TopRatedCourses = ({ data }) => {
 
     const { topic } = useParams();
     const { topics } = useTopicsStore();
-    const currentTopic = topics.filter((top) => top?._id === topic)[0]
+    const currentTopic = topics?.filter((top) => top?._id === topic)[0]
 
     return (
         <div>

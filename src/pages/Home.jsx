@@ -48,7 +48,6 @@ const Home = () => {
 
       <StepsSection />
 
-      {/************ pending ->  category wise courses *******************/}
       <TrendingCourses />
 
       <FeaturesGrid />

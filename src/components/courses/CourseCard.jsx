@@ -130,7 +130,7 @@ const CourseCard = ({ course }) => {
         </div>
 
         <div className='flex gap-1 flex-wrap mt-2'>
-          {course?.tags.slice(0, 3)?.map((tag, index) => (
+          {course?.tags?.slice(0, 3)?.map((tag, index) => (
             <span
               key={index}
               className='text-xs px-2 py-1 rounded-md bg-main-400 text-dark-50'

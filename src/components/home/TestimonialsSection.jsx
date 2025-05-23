@@ -102,13 +102,13 @@ const TestimonialsSection = () => {
     const currentCard = testimonials[index]
 
     return (
-        <div className='bg-second-100'>
+        <div className='bg-second-100 mt-12'>
             <Container>
-                <div className='w-full flex items-center gap-x-20 px-24 py-24'>
-                    <div className='w-full md:w-[40%] flex flex-col items-end gap-y-4'>
+                <div className='w-full flex flex-col-reverse lg:flex-row items-center gap-x-20 gap-y-12 px-4 py-16 lg:p-24 '>
+                    <div className='lg:w-[40%] w-full flex flex-col items-center lg:items-end gap-y-4'>
                         <div>
-                            <h4 className='text-end text-4xl font-normal'>Growth Stories</h4>
-                            <h4 className='text-end text-4xl font-semibold text-main-400 mt-1'>Unfiltered</h4>
+                            <h4 className='text-center lg:text-end text-3xl lg:text-4xl font-normal'>Growth Stories</h4>
+                            <h4 className='text-center lg:text-end text-3xl lg:text-4xl font-semibold text-main-400 mt-1'>Unfiltered</h4>
                         </div>
                         <p className='text-end text-sm'>Genuine journeys, proudly shared</p>
                         <div className='flex items-center gap-x-2'>
@@ -121,7 +121,7 @@ const TestimonialsSection = () => {
                         </div>
                     </div>
 
-                    <div className='w-full md:w-[60%] relative'>
+                    <div className='w-full lg:w-[60%] relative'>
                         <AnimatePresence mode="wait">
                             <motion.div
                                 key={index}
@@ -131,11 +131,11 @@ const TestimonialsSection = () => {
                                 transition={{ duration: 0.2 }}
                                 className='flex flex-col gap-y-4'
                             >
-                                <div className='flex gap-x-4 items-center'>
+                                <div className='flex gap-x-4 justify-center lg:justify-start items-center'>
                                     <img
                                         src={currentCard.image}
                                         alt='testimonial-user'
-                                        className='w-24 h-24 object-cover rounded-full border-2 border-dark-700'
+                                        className=' w-12 h-12 lg:w-24 lg:h-24 object-cover rounded-full border-2 border-dark-700'
                                         loading='lazy'
                                     />
                                     <div>
@@ -143,7 +143,7 @@ const TestimonialsSection = () => {
                                         <p className='text-sm text-gray-600'>{currentCard.role}</p>
                                     </div>
                                 </div>
-                                <p className='text-lg mt-2 text-dark-800 font-semibold'>" {currentCard.message} "</p>
+                                <p className='text-base lg:text-lg mt-2 text-dark-800 text-center lg:text-start font-semibold'>" {currentCard.message} "</p>
                             </motion.div>
                         </AnimatePresence>
                     </div>

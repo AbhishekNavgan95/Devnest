@@ -118,23 +118,23 @@ const categories = [
 const CategoriesSection = () => {
     return (
         <Container>
-            <h3 className='text-4xl font-medium'>Learning Categories, Curated for You</h3>
-            <div className='grid grid-cols-5 gap-4 mt-8'>
+            <h3 className='text-3xl text-center lg:text-start w-[80%] lg:w-full mx-auto lg:text-4xl font-medium'>Learning Categories, Curated for You</h3>
+            <div className='grid grid-cols-2 lg:grid-cols-5 gap-4 mt-8'>
                 {
                     categories.map((category, index) => (
                         <div
                             key={index}
-                            className="relative flex items-center justify-center px-4 py-6 overflow-hidden border border-dark-700 bg-white rounded-sm shadow-sm transition-shadow duration-200 group hover:shadow-dark-800 cursor-pointer"
+                            className="relative flex items-center justify-center aspect-[16/7] lg:aspect-auto px-4 py-6 overflow-hidden border border-dark-700 bg-white rounded-sm shadow-sm transition-shadow duration-200 group hover:shadow-dark-800 cursor-pointer"
                         >
                             {/* Image Layer */}
                             <img
                                 src={category.image}
                                 alt={category.name}
-                                className="w-16 h-16 absolute inset-0 m-auto transition-all duration-300 opacity-100 group-hover:opacity-0"
+                                className="w-8 lg:w-16 h-8 lg:h-16 absolute inset-0 m-auto transition-all duration-300 opacity-100 group-hover:opacity-0"
                             />
 
                             {/* Text Layer */}
-                            <h4 className="opacity-0 group-hover:opacity-100 font-medium transition-all duration-300 z-10 text-center">
+                            <h4 className="opacity-0 group-hover:opacity-100 text-sm lg:text-base font-medium transition-all duration-300 z-2 text-center">
                                 {category.name}
                             </h4>
                         </div>

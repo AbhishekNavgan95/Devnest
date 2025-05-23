@@ -44,7 +44,10 @@ const CoursesLayoutNav = () => {
         }
     };
 
-    const currentCategoryObj = categories.find(cat => cat._id === currentCategory);
+    const currentCategoryObj = categories?.find(cat => cat._id === currentCategory);
+    if(!currentCategoryObj) {
+        return null; // or handle the case when the category is not found
+    }
     const topics = currentCategoryObj?.topics || [];
 
     return (
