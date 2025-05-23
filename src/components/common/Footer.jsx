@@ -1,218 +1,106 @@
 import React from 'react'
 import logo from '../../assets/logo/logo.png'
-import { FaLinkedinIn } from "react-icons/fa";
+import { FaLinkedinIn, FaFacebookF, FaInstagram } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
-import { FaFacebookF } from "react-icons/fa";
-import { FaInstagram } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className='w-full px-4 py-14 bg-main-950'>
-      <div className='max-w-[1400px] mx-auto'>
-        <div className='flex items-start justify-between gap-x-20'>
-          {/* logo + links */}
-          <div className='flex flex-col items-start'>
-            <img src={logo} width={200} alt="" />
-            <div className='flex text-dark-50 text-base mt-6 gap-x-4'>
-              {/* links */}
-              <a href="">
-                <FaLinkedinIn />
-              </a>
-              <a href="">
-                <BsTwitterX />
-              </a>
-              <a href="">
-                <FaFacebookF />
-              </a>
-              <a href="">
-                <FaInstagram />
-              </a>
+    <footer className="w-full px-4 py-14 bg-main-950 text-sm text-white">
+      <div className="max-w-[1400px] mx-auto">
+        <div className="flex flex-col lg:flex-row justify-between gap-10 lg:gap-20">
+
+          {/* Left Section: Logo and Social Links */}
+          <div className="flex flex-col items-center md:items-start mb-10 lg:mb-0">
+            <img src={logo} width={160} alt="Logo" />
+            <div className="flex text-dark-50 text-base mt-6 gap-4">
+              <a href=""><FaLinkedinIn /></a>
+              <a href=""><BsTwitterX /></a>
+              <a href=""><FaFacebookF /></a>
+              <a href=""><FaInstagram /></a>
             </div>
           </div>
 
-          {/* middle part */}
-          <div className='flex items-start gap-x-20'>
-            {/* pages */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Pages
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  Home
-                </a>
-                <a href="">
-                  Explore
-                </a>
-                <a href="">
-                  Community
-                </a>
-                <a href="">
-                  About Us
-                </a>
-                <a href="">
-                  Contact Us
-                </a>
-              </div>
+          {/* Main Footer Grid Content */}
+          <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-8 w-full">
+
+            {/* Pages */}
+            <div>
+              <h6 className="font-semibold mb-4">Pages</h6>
+              <ul className="space-y-2 text-dark-600">
+                <li><a href="">Home</a></li>
+                <li><a href="">Explore</a></li>
+                <li><a href="">Community</a></li>
+                <li><a href="">About Us</a></li>
+                <li><a href="">Contact Us</a></li>
+              </ul>
             </div>
 
-
-            {/* langugaes */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Languages
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  C
-                </a>
-                <a href="">
-                  C++
-                </a>
-                <a href="">
-                  Java
-                </a>
-                <a href="">
-                  JavaScript
-                </a>
-                <a href="">
-                  Python
-                </a>
-                <a href="">
-                  Rust
-                </a>
-                <a href="">
-                  Go
-                </a>
-                <a href="">
-                  Kotlin
-                </a>
-                <a href="">
-                  Ruby
-                </a>
-                <a href="">
-                  Swift
-                </a>
-              </div>
+            {/* Languages */}
+            <div>
+              <h6 className="font-semibold mb-4">Languages</h6>
+              <ul className="space-y-2 text-dark-600">
+                {['C', 'C++', 'Java', 'JavaScript', 'Python', 'Rust', 'Go', 'Kotlin', 'Ruby', 'Swift'].map(lang => (
+                  <li key={lang}><a href="">{lang}</a></li>
+                ))}
+              </ul>
             </div>
 
-            {/* categories */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Categories
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  App Development
-                </a>
-                <a href="">
-                  Web Development
-                </a>
-                <a href="">
-                  DevOps
-                </a>
-                <a href="">
-                  Data Science
-                </a>
-                <a href="">
-                  AI & ML
-                </a>
-                <a href="">
-                  Frontend Development
-                </a>
-                <a href="">
-                  Backend Development
-                </a>
-                <a href="">
-                  Open Source
-                </a>
-              </div>
+            {/* Categories */}
+            <div>
+              <h6 className="font-semibold mb-4">Categories</h6>
+              <ul className="space-y-2 text-dark-600">
+                {[
+                  'App Development', 'Web Development', 'DevOps',
+                  'Data Science', 'AI & ML', 'Frontend Development',
+                  'Backend Development', 'Open Source'
+                ].map(cat => (
+                  <li key={cat}><a href="">{cat}</a></li>
+                ))}
+              </ul>
             </div>
 
-            {/* Commnunity */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Community
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  Discord
-                </a>
-                <a href="">
-                  Linked
-                </a>
-                <a href="">
-                  Reddit
-                </a>
-                <a href="">
-                  Twitter
-                </a>
-                <a href="">
-                  GitHub
-                </a>
-              </div>
+            {/* Community */}
+            <div>
+              <h6 className="font-semibold mb-4">Community</h6>
+              <ul className="space-y-2 text-dark-600">
+                <li><a href="">Discord</a></li>
+                <li><a href="">LinkedIn</a></li>
+                <li><a href="">Reddit</a></li>
+                <li><a href="">Twitter</a></li>
+                <li><a href="">GitHub</a></li>
+              </ul>
             </div>
-          </div>
 
-          {/* line */}
-          <div className='w-[1px] h-[200px] bg-dark-800'></div>
-
-          {/* right part */}
-          <div className='flex items-start gap-x-20'>
             {/* Resources */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Resources
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  Blog
-                </a>
-                <a href="">
-                  Documentation
-                </a>
-                <a href="">
-                  Tutorials
-                </a>
-                <a href="">
-                  FAQ
-                </a>
-                <a href="">
-                  Roadmap
-                </a>
-              </div>
+            <div>
+              <h6 className="font-semibold mb-4">Resources</h6>
+              <ul className="space-y-2 text-dark-600">
+                <li><a href="">Blog</a></li>
+                <li><a href="">Documentation</a></li>
+                <li><a href="">Tutorials</a></li>
+                <li><a href="">FAQ</a></li>
+                <li><a href="">Roadmap</a></li>
+              </ul>
             </div>
 
             {/* Company */}
-            <div className='flex flex-col text-sm items-start gap-y-4 text-white'>
-              <h6 className=' font-medium'>
-                Company
-              </h6>
-              <div className='flex flex-col items-start gap-y-4 text-dark-600'>
-                <a href="">
-                  Careers
-                </a>
-                <a href="">
-                  Privacy Policy
-                </a>
-                <a href="">
-                  Terms of Service
-                </a>
-                <a href="">
-                  Partners
-                </a>
-                <a href="">
-                  Support
-                </a>
-              </div>
+            <div>
+              <h6 className="font-semibold mb-4">Company</h6>
+              <ul className="space-y-2 text-dark-600">
+                <li><a href="">Careers</a></li>
+                <li><a href="">Privacy Policy</a></li>
+                <li><a href="">Terms of Service</a></li>
+                <li><a href="">Partners</a></li>
+                <li><a href="">Support</a></li>
+              </ul>
             </div>
-          </div>
 
+          </div>
         </div>
 
-        {/* footer bottomsection */}
-        <div>
-
+        {/* Bottom Section (optional for copyright, etc.) */}
+        <div className="mt-10 border-t border-dark-800 pt-6 text-center text-dark-500 text-xs">
+          © {new Date().getFullYear()} Tutorial Heaven. All rights reserved.
         </div>
       </div>
     </footer>

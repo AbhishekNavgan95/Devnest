@@ -38,16 +38,16 @@ const SearchBar = () => {
 
 
     return (
-        <div className='relative'>
-            <span className='flex items-center justify-between border border-dark-700 px-2 rounded-sm transition-all focus-within:ring-1 focus-within:ring-dark-800'>
-                <div className='flex items-center'>
-                    <MdOutlineManageSearch className='text-2xl text-dark-950' />
+        <div className='relative '>
+            <span className='flex w-full items-center justify-between border border-dark-700 px-2 rounded-sm transition-all focus-within:ring-1 focus-within:ring-dark-800'>
+                <div className='flex items-center w-full'>
+                    <MdOutlineManageSearch className=' text-base lg:text-2xl text-dark-950' />
                     <Input
                         onChange={(e) => setSearchTerm(e.target.value)}
                         value={searchTerm}
                         type="text"
                         placeholder="Search here..."
-                        className='w-[600px] h-9 bg-transparent placeholder:text-dark-700 text-dark-950 font-medium placeholder:text-base text-base !border-none outline-none focus-visible:ring-0 !focus:ring-0 !focus:outline-none'
+                        className='min-w-[180px] xl:w-[600px] h-7 md:h-9 bg-transparent placeholder:text-dark-700 text-dark-950 font-medium placeholder:text-xs lg:placeholder:text-base text-xs lg:text-base !border-none outline-none focus-visible:ring-0 !focus:ring-0 !focus:outline-none'
                     />
                 </div>
                 {
@@ -60,17 +60,17 @@ const SearchBar = () => {
 
             {
                 data && (
-                    <div className='absolute top-[120%] shadow-sm shadow-dark-600 w-full bg-dark-50 p-3 border border-dark-600 rounded-md z-50'>
-                        <div className='flex flex-col gap-y-3'>
+                    <div className='absolute top-[120%] shadow-sm shadow-dark-600 w-full bg-dark-50 p-2 lg:p-3 border border-dark-600 rounded-md z-50'>
+                        <div className='flex flex-col gap-y-2'>
                             {
                                 data?.courses?.map((course, index) => (
                                     <button onClick={() => {
                                         navigate(`/course-details/${course?._id}`)
                                         setSearchTerm('')
                                     }} key={index} className='flex items-center group gap-x-2'>
-                                        <img src={course.thumbnail?.url} alt="thumbnail" className='w-8 h-8 object-cover rounded-md' />
+                                        <img src={course.thumbnail?.url} alt="thumbnail" className='w-6 h-6 lg:w-8 lg:h-8 object-cover rounded-md' />
                                         <div>
-                                            <h2 className='text-sm font-medium group-hover:underline'>{course.title}</h2>
+                                            <h2 className='text-xs lg:text-sm text-start line-clamp-2 font-medium group-hover:underline'>{course.title}</h2>
                                         </div>
                                     </button>
                                 ))

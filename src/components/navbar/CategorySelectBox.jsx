@@ -31,7 +31,7 @@ const CategorySelectBox = ({ categories }) => {
 
     return (
         <span
-            className='relative inline-block z-10'
+            className='relative hidden lg:inline-block z-10'
             onMouseLeave={handleCloseMenu}
             onBlur={handleCloseMenu}
         >
