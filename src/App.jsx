@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Navbar from './components/common/Navbar'
@@ -30,6 +30,18 @@ import ForgotPassword from './pages/ForgotPassword'
 import UpdatePassword from './pages/UpdatePassword'
 
 const App = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+    })
+
+    return () => document.removeEventListener('contextmenu')
+  }, [])
 
   const location = useLocation();
   let showHeader = true;

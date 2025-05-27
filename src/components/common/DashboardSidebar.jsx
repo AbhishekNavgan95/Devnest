@@ -22,13 +22,13 @@ const DashboardSidebar = () => {
 
     const logout = async () => {
         try {
-            await axios.post(BASE_API_URL + '/auth/logout')
+            // await axios.post(BASE_API_URL + '/auth/logout')
+            logoutUser()
+            navigate('/')
             toast({
                 title: "Logged out successfully",
                 description: "You have been logged out successfully"
             })
-            logoutUser()
-            navigate('/')
         } catch (error) {
             toast({
                 title: "Error logging out",
