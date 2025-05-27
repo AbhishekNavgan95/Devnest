@@ -1,3 +1,4 @@
+import { getCloudinaryUrl } from '@/lib/utils';
 import { useUserStore } from '@/stores/useUserStore';
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
@@ -17,7 +18,7 @@ const CourseCard = ({ course }) => {
             to={`/view-course/${course?._id}`}
             className="flex flex-col cursor-pointer border bg-white border-dark-500 max-w-[360px] rounded-md shadow-sm hover:shadow-dark-900 transition-shadow duration-200 overflow-hidden"
         >
-            <img src={course?.thumbnail?.url} className="aspect-video rounded-t-md" alt={course?.title} />
+            <img src={getCloudinaryUrl(course?.thumbnail?.url, { width: 400, height: 225 })} className="aspect-video rounded-t-md" alt={course?.title} />
             <div className="px-4 pt-2 pb-4">
                 <h3 className="text-lg font-medium line-clamp-1">{course?.title}</h3>
                 <p className="text-dark-700 text-sm w-max line-clamp-1">{course?.category?.name}</p>

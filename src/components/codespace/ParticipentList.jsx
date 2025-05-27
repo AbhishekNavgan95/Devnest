@@ -7,6 +7,7 @@ import {
 import { Switch } from '@/components/ui/switch'
 import ConfirmationModal from '../common/ConfirmationModal'
 import { Label } from '../ui/label'
+import { getCloudinaryUrl } from '@/lib/utils'
 
 const ParticipentList = ({
     participants,
@@ -36,14 +37,14 @@ const ParticipentList = ({
                             console.warn("Invalid participant data:", participant);
                             return null;
                         }
-                        
+
                         return (
-                            <UserCard 
-                                key={participant.user._id || index} 
-                                kickUser={kickUser} 
-                                isInstructor={isInstructor} 
-                                handleAllowEditChange={handleAllowEditChange} 
-                                participant={participant} 
+                            <UserCard
+                                key={participant.user._id || index}
+                                kickUser={kickUser}
+                                isInstructor={isInstructor}
+                                handleAllowEditChange={handleAllowEditChange}
+                                participant={participant}
                             />
                         );
                     })}
@@ -60,7 +61,7 @@ const UserCard = ({
     kickUser
 }) => {
     const [modal, setModal] = useState(null);
-    
+
     // Ensure we have valid user data
     if (!participant || !participant.user) {
         console.warn("UserCard received invalid participant data:", participant);
@@ -71,7 +72,7 @@ const UserCard = ({
     const user = participant.user;
     const userId = user._id ? user._id : user; // Handle both populated and reference IDs
     const firstName = user.firstName || 'Unknown';
-    const imageUrl = user.image?.url || '/default-avatar.png'; // Use a default image if none exists
+    const imageUrl = getCloudinaryUrl(user.image?.url, { width: 140, height: 140 }) || '/default-avatar.png'; // Use a default image if none exists
 
     const openModal = () => {
         setModal({
@@ -91,9 +92,9 @@ const UserCard = ({
         <DropdownMenu>
             <DropdownMenuTrigger asChild>
                 <div className={`select-none flex border px-4 aspect-square cursor-pointer p-2 rounded-md bg-dark-400 hover:bg-dark-500 transition-all duration-300 flex-col items-center justify-center w-full gap-x-2`}>
-                    <img 
-                        className={`w-12 h-12 rounded-full border-4 ${participant.role === "editor" ? "border-red-500" : "border-yellow-200"}`} 
-                        src={imageUrl} 
+                    <img
+                        className={`w-12 h-12 rounded-full border-4 ${participant.role === "editor" ? "border-red-500" : "border-yellow-200"}`}
+                        src={imageUrl}
                         alt={firstName}
                         onError={(e) => {
                             // Fallback if image fails to load
@@ -103,16 +104,16 @@ const UserCard = ({
                     <p className='text-xs mt-2'>{firstName}</p>
                 </div>
             </DropdownMenuTrigger>
-            
+
             {isInstructor && !modal && (
                 <DropdownMenuContent className="p-2 z-[9] flex flex-col gap-y-2">
                     <div className='flex gap-x-2 items-center'>
-                        <Switch 
+                        <Switch
                             id={`editAllowed-${userId}`}
                             checked={participant.role === "editor"}
                             onCheckedChange={() => {
                                 handleAllowEditChange(
-                                    participant.role === "editor" ? "viewer" : "editor", 
+                                    participant.role === "editor" ? "viewer" : "editor",
                                     userId
                                 );
                             }}
@@ -121,7 +122,7 @@ const UserCard = ({
                             Allow edit
                         </Label>
                     </div>
-                    <button 
+                    <button
                         onClick={openModal}
                         className="text-red-500 hover:text-red-600 font-medium"
                     >
@@ -129,7 +130,7 @@ const UserCard = ({
                     </button>
                 </DropdownMenuContent>
             )}
-            
+
             {modal && <ConfirmationModal {...modal} />}
         </DropdownMenu>
     );

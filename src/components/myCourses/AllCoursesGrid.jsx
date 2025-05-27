@@ -11,9 +11,7 @@ const AllCoursesGrid = ({
                     <div className='md:mt-6 mt-4 w-full grid md:grid-cols-2 gap-4 lg:grid-cols-3 xl:grid-cols-4'>
                         {
                             data?.map((course, i) => (
-                                <>
-                                    <CourseCard course={course} key={i} />
-                                </>
+                                <CourseCard course={course} key={course?._id + i} />
                             ))
                         }
                     </div>

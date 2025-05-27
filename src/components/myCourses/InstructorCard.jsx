@@ -1,3 +1,4 @@
+import { getCloudinaryUrl } from '@/lib/utils'
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 
@@ -10,7 +11,7 @@ const InstructorCard = ({
     return (
         <div className='p-4 border rounded-md border-dark-700 bg-white flex flex-col gap-y-4'>
             <div className='flex items-center h-full gap-x-4'>
-                <img src={data?.image?.url} className='w-12 md:w-16 aspect-square rounded-full border border-dark-700' alt="" />
+                <img src={getCloudinaryUrl(data?.image?.url, { width: 140, height: 140 })} className='w-12 md:w-16 aspect-square rounded-full border border-dark-700' alt="" />
                 <div>
                     <h4 onClick={() => navigate(`/instructor/${data?._id}`)} className='font-medium hover:underline text-sm md:text-base cursor-pointer'>
                         {

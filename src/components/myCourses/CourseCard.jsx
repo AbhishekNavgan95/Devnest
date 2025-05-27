@@ -5,7 +5,7 @@ import { MdOutlineDelete } from "react-icons/md";
 import { useCourseFormStore } from '@/stores/useCourseFormStore';
 import { useNavigate } from 'react-router-dom';
 import ConfirmationModal from '../common/ConfirmationModal';
-import { api } from '@/lib/utils';
+import { api, getCloudinaryUrl } from '@/lib/utils';
 import { useMutation, useQueryClient } from '@tanstack/react-query';
 import { useToast } from '@/hooks/use-toast';
 import { BiCategory } from "react-icons/bi";
@@ -51,7 +51,6 @@ const CourseCard = ({
     }
 
     const editCourse = (course) => {
-        console.log("course : ", course)
         setStep(1)
         setEdit(true)
         setCourse(course)
@@ -62,7 +61,7 @@ const CourseCard = ({
     return (
         <div className='border border-dark-600 bg-white overflow-hidden flex flex-col rounded-md'>
             <div className='relative'>
-                <img src={course?.thumbnail?.url} className='w-full border-b border-dark-600 aspect-video object-cover' alt="" />
+                <img src={getCloudinaryUrl(course?.thumbnail?.url, { width: 400, height: 225 })} className='w-full border-b border-dark-600 aspect-video object-cover' alt="" />
                 <div className='w-full gap-x-2 flex justify-end items-center px-2 py-2 absolute top-0'>
                     <button onClick={() => setConfirmationModal({
                         heading: "Are you sure?",
@@ -85,7 +84,7 @@ const CourseCard = ({
             </div>
             <div className='flex flex-col border h-full justify-between px-2 py-2'>
                 <div className='h-full'>
-                    <h3 className='text-lg line-clamp-2 font-medium'>
+                    <h3 onClick={() => navigate(`/course-details/${course?._id}`)} className='text-lg hover:underline cursor-pointer line-clamp-2 font-medium'>
                         {course?.title}
                     </h3>
                     <p className='text-sm text-dark-900 line-clamp-1 mt-1'>

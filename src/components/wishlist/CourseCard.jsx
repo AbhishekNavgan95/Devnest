@@ -4,6 +4,7 @@ import { IoIosClose } from "react-icons/io";
 import Stars from '../common/Stars';
 import { MdOutlineCurrencyRupee } from 'react-icons/md'
 import { useCartStore } from '@/stores/useCartStore';
+import { getCloudinaryUrl } from '@/lib/utils';
 
 const CourseCard = ({
     course
@@ -17,7 +18,7 @@ const CourseCard = ({
     return (
         <div className='border flex items-center gap-x-2 rounded-md overflow-hidden border-dark-600'>
 
-            <img className='!aspect-video h-[140px]' src={course?.thumbnail?.url} alt="" />
+            <img className='!aspect-video h-[140px]' src={getCloudinaryUrl(course?.thumbnail?.url, { width: 400, height: 225 })} alt="" />
 
             <div className='w-full p-2'>
                 <div className='flex justify-between gap-x-4 w-full'>

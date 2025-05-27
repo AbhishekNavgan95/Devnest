@@ -35,8 +35,8 @@ const FeaturesGrid = () => {
                 </div>
 
                 <div className='p-8 border bg-white border-dark-700 relative overflow-hidden rounded-3xl aspect-video lg:aspect-auto w-full col-span-2 lg:col-span-1 '>
-                    <h5 className='text-lg text-dark-900 font-bold'>AI Assistant</h5>
-                    <p className='text-sm mt-2 relative z-[2]'>Personal AI sidekick for seamless site navigation and real-time doubt clearing.</p>
+                    <h5 className='text-2xl text-main-400 font-bold '>Nestor</h5>
+                    <p className='text-sm mt-2 relative z-[2]'>Blazing fast personal AI assistant for seamless site navigation and real-time doubt clearing.</p>
                     <img src={chatbotlogo} className='absolute w-[200px] lg:w-auto right-0 -bottom-4' alt="" />
                 </div>
             </div>

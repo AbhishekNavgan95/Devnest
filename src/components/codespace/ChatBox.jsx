@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import { getCloudinaryUrl } from '@/lib/utils';
 import { useUserStore } from '@/stores/useUserStore';
 import React, { useEffect, useRef, useState } from 'react'
 import { IoMdSend } from "react-icons/io";
@@ -25,7 +26,7 @@ const Chatbox = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log("message : ", message);
+        // console.log("message : ", message);
         sendMessage(message);
         setMessage('');
     }
@@ -84,7 +85,7 @@ const Message = ({ message, isOwner }) => {
 
     return (
         <div className={`flex gap-2 items-start ${isOwner ? "justify-start flex-row-reverse" : ""}`}>
-            <img src={message?.sender?.image?.url} alt="user" className='w-4 h-4 mt-1 rounded-full ' />
+            <img src={getCloudinaryUrl(message?.sender?.image?.url, { width: 60, height: 60 })} alt="user" className='w-4 h-4 mt-1 rounded-full ' />
             <div className='flex flex-col bg-dark-300 rounded-md p-1 px-3 whitespace-pre-line max-w-[300px]'>
                 <span className={`text-richblack-900 font-semibold text-xs ${isOwner && "text-end"}`}>{message?.sender?.firstName} {message?.sender?.lastName}</span>
                 <span className={`text-richblack-900 text-sm ${isOwner && "text-end"}`}>{message?.content}</span>

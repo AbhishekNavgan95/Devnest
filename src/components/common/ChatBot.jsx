@@ -127,14 +127,14 @@ const ChatBot = () => {
             {/* Chatbot Toggle Button */}
             <button
                 onClick={() => setChatBotModalOpen((prev) => !prev)}
-                className="fixed rounded-full border-[6px] border-main-400 bottom-5 right-5 md:bottom-10 md:right-10 hover:scale-110 transition-all duration-100 z-[11]"
+                className="fixed rounded-full bg-dark-50 border-[6px] border-main-400 bottom-5 right-5 md:bottom-10 md:right-10 hover:scale-110 transition-all duration-100 z-[11]"
             >
                 <img className="w-8 h-8 md:w-14 md:h-14 rounded-full" src={botLogo} alt="Chatbot" />
             </button>
 
             {/* Animated Chat Modal */}
             {chatBotModalOpen && (
-                <div onClick={(e) => setChatBotModalOpen(false)} className='fixed inset-0 bg-black/40 z-[10]'>
+                <div onClick={(e) => setChatBotModalOpen(false)} className='fixed inset-0 bg-black/40 backdrop-blur-sm z-[10]'>
                     <AnimatePresence>
                         <motion.div
                             onClick={(e) => e.stopPropagation()}
@@ -143,7 +143,7 @@ const ChatBot = () => {
                             animate={{ opacity: 1, y: 0, scale: 1 }}
                             exit={{ opacity: 0, x: 350, y: 400, scale: 0 }}
                             transition={{ duration: 0.1, ease: "easeInOut" }}
-                            className="w-full fixed bottom-20 right-6 md:bottom-32 md:right-12 z-40 max-w-[350px] md:max-w-[440px] lg:max-w-[600px] mx-auto p-2 md:p-4 bg-dark-50 border border-richblack-600 rounded-md shadow-xl"
+                            className="w-full fixed bottom-20 right-6 md:bottom-32 md:right-12 z-40 max-w-[320px] md:max-w-[440px] lg:max-w-[600px] mx-auto p-2 md:p-4 bg-dark-50 border border-richblack-600 rounded-md shadow-xl"
                         >
                             {/* Chat history */}
                             <div className="bg-gray-100 p-4 rounded-md h-[450px] md:h-[500px] xl:h-[550px] space-y-2 overflow-y-auto mb-4">
@@ -236,7 +236,7 @@ const ChatBot = () => {
                                     ref={inputRef}
                                     onChange={(e) => setInput(e.target.value)}
                                     onKeyDown={handleInputKeyDown}
-                                    placeholder="What can ECHOBot do? almost everything! give it a try..."
+                                    placeholder="Test out what Nestor can do!"
                                     className="flex-1 p-2 border rounded"
                                 />
                                 <button

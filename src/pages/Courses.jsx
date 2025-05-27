@@ -29,8 +29,6 @@ const Courses = () => {
         queryFn: () => fetchTopicCourse(topic)
     })
 
-    // console.log("data : ", data)
-
     if (isPending) {
         return (
             <CoursesSkeletonLoader />

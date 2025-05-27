@@ -4,6 +4,7 @@ import { IoMdArrowDropright } from "react-icons/io";
 import community from '../../assets/images/community.png';
 import growth from '../../assets/images/growth.png';
 import explore from '../../assets/images/explore.png';
+import { useNavigate } from 'react-router-dom';
 
 const featureData = [
     {
@@ -11,26 +12,30 @@ const featureData = [
         paragraph:
             "Browse a variety of curated learning paths across tech, design, business, and more. Whether you're a beginner or upskilling pro, there's a course tailored to match your ambition and pace.",
         linkTitle: "Browse Courses",
-        image: explore
+        image: explore,
+        linkTo: '/courses'
     },
     {
         heading: "Engage with a Supportive Community",
         paragraph:
             "Connect with learners, mentors, and experts who share your passion. Join discussions, exchange knowledge, and grow together in a vibrant, collaborative space designed to keep you inspired.",
         linkTitle: "Join the Community",
-        image: community
+        image: community,
+        linkTo: '/dashboard/community'
     },
     {
         heading: "Track and Celebrate Your Growth",
         paragraph:
             "Monitor your learning progress through a personalized dashboard. Earn badges, complete challenges, and showcase certificates that reflect your journey as you move from learner to expert, step by step.",
         linkTitle: "View Dashboard",
-        image: growth
+        image: growth,
+        linkTo: '/dashboard/enrolled-courses'
     }
 ];
 
 const StepsSection = () => {
     const [currentIndex, setCurrentIndex] = useState(0);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const interval = setInterval(() => {
@@ -68,7 +73,7 @@ const StepsSection = () => {
                                 <div>
                                     <h4 className='text-lg sm:text-xl font-semibold mb-2 sm:mb-4'>{feat.heading}</h4>
                                     <p className='text-xs lg:text-sm leading-5 lg:leading-6'>{feat.paragraph}</p>
-                                    <button className='mt-2 sm:mt-4 text-xs lg:text-xs text-main-400 flex items-center gap-x-2 hover:gap-x-3 transition-all duration-200 font-medium'>
+                                    <button onClick={() => navigate(feat?.linkTo)} className='mt-2 sm:mt-4 text-xs lg:text-xs text-main-400 flex items-center gap-x-2 hover:gap-x-3 transition-all duration-200 font-medium'>
                                         {feat.linkTitle}
                                         <IoMdArrowDropright className='inline text-lg' />
                                     </button>

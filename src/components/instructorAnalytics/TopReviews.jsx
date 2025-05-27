@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Stars from '../common/Stars'
 import { MdKeyboardArrowRight, MdKeyboardArrowLeft } from "react-icons/md";
+import { getCloudinaryUrl } from '@/lib/utils';
 
 const TopReviews = ({ data }) => {
     const [reviews, setReviews] = useState([])
@@ -79,7 +80,10 @@ const TopReviews = ({ data }) => {
                     <div className='flex gap-x-4 items-center'>
                         <img
                             className='w-[70px] border border-dark-600 object-cover rounded-full aspect-square'
-                            src={currentReview?.user?.image?.url}
+                            src={getCloudinaryUrl(currentReview?.user?.image?.url, {
+                                width: 70,
+                                height: 70
+                            })}
                             alt={`${currentReview?.user?.firstName}'s avatar`}
                         />
                         <div>

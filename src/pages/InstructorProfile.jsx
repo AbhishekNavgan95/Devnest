@@ -1,6 +1,6 @@
 import Container from '@/components/common/Container';
 import { Button } from '@/components/ui/button';
-import { api } from '@/lib/utils';
+import { api, getCloudinaryUrl } from '@/lib/utils';
 import { useMutation, useQuery } from '@tanstack/react-query';
 import React, { useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -55,25 +55,23 @@ const InstructorProfile = () => {
         }
     });
 
-    console.log("data : ", data)
-
     // skeleton
     if (isPending) {
         return (
             <div className='py-8'>
                 <Container>
                     <div className='flex flex-col gap-y-8'>
-                        <div className='h-44 rounded-md bg-dark-200 animate-pulse'></div>
+                        <div className='h-24 md:h-44 rounded-md bg-dark-200 animate-pulse'></div>
 
-                        <div className='flex items-center gap-x-4'>
-                            <div className='w-[160px] aspect-square rounded-full bg-dark-200 animate-pulse'></div>
+                        <div className='flex flex-col md:flex-row md:items-center self-start gap-4'>
+                            <div className='w-[100px] md:w-[160px] aspect-square rounded-full bg-dark-200 animate-pulse'></div>
                             <div className='space-y-2'>
                                 <div className='w-[200px] bg-dark-200 animate-pulse h-6'></div>
                                 <div className='w-[350px] bg-dark-200 animate-pulse h-4'></div>
                                 <div className='w-[100px] bg-dark-200 animate-pulse h-6'></div>
                                 <div className='flex gap-x-2'>
-                                    <div className='w-[100px] bg-dark-200 animate-pulse h-8'></div>
-                                    <div className='w-[100px] bg-dark-200 animate-pulse h-8'></div>
+                                    <div className='w-[100px] bg-dark-200 animate-pulse h-6'></div>
+                                    <div className='w-[100px] bg-dark-200 animate-pulse h-6'></div>
                                 </div>
                             </div>
                         </div>
@@ -114,19 +112,19 @@ const InstructorProfile = () => {
                 <div>
                     {
                         instructor?.banner?.url
-                            ? <img src={instructor?.banner?.url} className='h-44 w-full rounded-md object-cover' alt="" />
-                            : <div className='w-full h-44 text-dark-700 bg-dark-200 rounded-md flex items-center justify-center'>
+                            ? <img src={getCloudinaryUrl(instructor?.banner?.url, { width: 1200, height: 300 })} className='h-24 md:h-44 w-full rounded-md object-cover' alt="" />
+                            : <div className='w-full h-24 md:h-44 text-dark-700 bg-dark-200 rounded-md flex items-center justify-center'>
                                 No banner added
                             </div>
                     }
 
-
-                    <div className='my-12 px-8 flex items-center gap-x-6'>
-                        <img src={instructor?.image?.url} className='w-[160px] bg-dark-200 rounded-full border border-dark-600' alt="banner" />
+                    <div className='my-4 md:my-12 md:px-8 flex flex-col md:flex-row items-start md:items-center gap-4 md:gap-6'>
+                        <img src={getCloudinaryUrl(instructor?.image?.url, { width: 120, height: 120 })} className='w-[100px] md:w-[160px] bg-dark-200 rounded-full border border-dark-600' alt="banner" />
                         <div>
                             <h2 className='text-2xl font-medium'>{instructor?.firstName} {instructor?.lastName}</h2>
                             <p className='text-xs mt-1 text-dark-800'>{instructor?.additionalDetails?.experience}</p>
-                            <p className='mt-1 text-sm text-dark-900 font-medium'>{instructor?.additionalDetails?.followers} Followers</p>
+                            {/* <p className='mt-1 text-sm text-dark-900 font-medium'>{instructor?.additionalDetails?.followers} Followers</p> */}
+                            <p className='mt-1 text-sm text-dark-900 font-medium'>{courses?.length} Courses</p>
                             <div className='mt-2 flex items-center gap-x-4'>
                                 {/* {
                                     !isFollowing &&
@@ -156,16 +154,16 @@ const InstructorProfile = () => {
 
                     {
                         instructor?.additionalDetails?.niche?.length > 0 &&
-                            <div className='mt-8'>
-                                <h4 className='text-xl font-medium'>Niche</h4>
-                                <div className='flex gap-x-4 mt-2 flex-wrap'>
-                                    {instructor?.additionalDetails?.niche?.map((niche, index) => (
-                                        <p key={index} className='text-xs px-4 py-1 border border-dark-700 rounded-md mt-2 leading-relaxed text-dark-900 font-medium'>
-                                            {niche}
-                                        </p>
-                                    ))}
-                                </div>
+                        <div className='mt-8'>
+                            <h4 className='text-xl font-medium'>Niche</h4>
+                            <div className='flex gap-x-4 mt-2 flex-wrap'>
+                                {instructor?.additionalDetails?.niche?.map((niche, index) => (
+                                    <p key={index} className='text-xs px-4 py-1 border border-dark-700 rounded-md mt-2 leading-relaxed text-dark-900 font-medium'>
+                                        {niche}
+                                    </p>
+                                ))}
                             </div>
+                        </div>
                     }
 
                     <div className='mt-8'>

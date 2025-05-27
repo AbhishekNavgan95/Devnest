@@ -12,9 +12,9 @@ const StorySection = () => {
                 transition={{ duration: 0.8 }}
                 viewport={{ once: true }}
             >
-                <h4 className='mb-8'>
+                <h4 className='mb-4 md:mb-8'>
                     <div>
-                        <h1 className='text-5xl font-semibold text-start flex gap-x-2'>
+                        <h1 className='text-3xl md:text-5xl font-semibold text-start flex gap-x-2'>
                             Our <span className='text-main-400 flex gap-x-2 items-center'>
                                 Story
                                 <motion.span
@@ -29,7 +29,7 @@ const StorySection = () => {
                         </h1>
                     </div>
                     <motion.p
-                        className='text-2xl font-light my-8 text-start leading-relaxed'
+                        className='text-lg md:text-2xl font-light my-4 md:my-8 text-start leading-relaxed'
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         transition={{ duration: 1, delay: 0.2 }}

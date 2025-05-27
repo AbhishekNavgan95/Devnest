@@ -3,6 +3,7 @@ import React, { useRef, useState } from 'react'
 import { MdOutlineCurrencyRupee } from 'react-icons/md'
 import Stars from '../common/Stars'
 import { AnimatePresence, motion } from 'framer-motion'
+import { getCloudinaryUrl } from '@/lib/utils'
 
 const CourseCard = ({ course }) => {
   const navigate = useNavigate();
@@ -65,7 +66,7 @@ const CourseCard = ({ course }) => {
 
             <div className='space-y-1'>
               {
-                course?.whatsIncluded?.slice(0,5)?.map((item, index) => (
+                course?.whatsIncluded?.slice(0, 5)?.map((item, index) => (
                   <li key={index} className=' list-disc list-inside text-xs'>{item}</li>
                 ))
               }
@@ -93,7 +94,7 @@ const CourseCard = ({ course }) => {
       {/* Main Card */}
       <div className='relative'>
         <img
-          src={course?.thumbnail?.url}
+          src={getCloudinaryUrl(course?.thumbnail?.url, { width: 400, height: 225 }) || 'https://placehold.co/400x225'}
           className='w-full border-b rounded-t-md border-dark-600 aspect-video object-cover'
           alt={course?.title}
         />

@@ -39,7 +39,7 @@ const CodeSpacesList = ({ user, data, loading }) => {
                 })
             }
         } catch (error) {
-            console.log("error joining room : ", error);
+            // console.log("error joining room : ", error);
             toast({
                 title: "Error joining code space",
                 description: error?.response?.data?.message || "Something went wrong",

@@ -3,7 +3,7 @@ import React from 'react'
 import { MdOutlineManageSearch } from "react-icons/md";
 import { Input } from '../ui/input';
 import { useQuery } from '@tanstack/react-query';
-import { api } from '@/lib/utils';
+import { api, getCloudinaryUrl } from '@/lib/utils';
 import { IoIosClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom';
 
@@ -61,21 +61,28 @@ const SearchBar = () => {
             {
                 data && (
                     <div className='absolute top-[120%] shadow-sm shadow-dark-600 w-full bg-dark-50 p-2 lg:p-3 border border-dark-600 rounded-md z-50'>
-                        <div className='flex flex-col gap-y-2'>
-                            {
-                                data?.courses?.map((course, index) => (
-                                    <button onClick={() => {
-                                        navigate(`/course-details/${course?._id}`)
-                                        setSearchTerm('')
-                                    }} key={index} className='flex items-center group gap-x-2'>
-                                        <img src={course.thumbnail?.url} alt="thumbnail" className='w-6 h-6 lg:w-8 lg:h-8 object-cover rounded-md' />
-                                        <div>
-                                            <h2 className='text-xs lg:text-sm text-start line-clamp-2 font-medium group-hover:underline'>{course.title}</h2>
-                                        </div>
-                                    </button>
-                                ))
-                            }
-                        </div>
+                        {
+                            data?.courses?.length === 0 ? (
+                                <div className='flex flex-col gap-y-2'>
+                                    <h2 className='text-xs lg:text-sm line-clamp-1 text-center font-medium  '>No results found</h2>
+                                </div>
+                            ) : (
+                                <div className='flex flex-col gap-y-2'>
+                                    {
+                                        data?.courses?.map((course, index) => (
+                                            <button onClick={() => {
+                                                navigate(`/course-details/${course?._id}`)
+                                                setSearchTerm('')
+                                            }} key={index} className='flex items-center group gap-x-2'>
+                                                <img src={getCloudinaryUrl(course.thumbnail?.url, { width: 400, height: 225 })} alt="thumbnail" className='w-6 h-6 lg:w-8 lg:h-8 object-cover rounded-md' />
+                                                <div>
+                                                    <h2 className='text-xs lg:text-sm text-start line-clamp-2 font-medium group-hover:underline'>{course.title}</h2>
+                                                </div>
+                                            </button>
+                                        ))
+                                    }
+                                </div>
+                            )}
                     </div>
                 )
             }

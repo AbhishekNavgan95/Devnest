@@ -26,6 +26,8 @@ import ViewCourse from './pages/ViewCourse'
 import JoinCodeSpace from './pages/JointCodeSpace'
 import InstructorProfile from './pages/InstructorProfile'
 import ChatBot from './components/common/ChatBot'
+import ForgotPassword from './pages/ForgotPassword'
+import UpdatePassword from './pages/UpdatePassword'
 
 const App = () => {
 
@@ -41,7 +43,7 @@ const App = () => {
   }
 
   return (
-    <div className='font-roboto bg-dark-50'>
+    <div className='font-roboto bg-dark-50 min-h-screen'>
       {
         showHeader && <Navbar />
       }
@@ -60,6 +62,8 @@ const App = () => {
         <Route path='/login' element={<PublicRoutes><Login /></PublicRoutes>} />
         <Route path='/signup' element={<PublicRoutes><Signup /></PublicRoutes>} />
         <Route path='/verify/:token' element={<PublicRoutes><VerifyAccount /></PublicRoutes>} />
+        <Route path='/forgot-password' element={<PublicRoutes><ForgotPassword /></PublicRoutes>} />
+        <Route path='/update-password/:token' element={<PublicRoutes><UpdatePassword /></PublicRoutes>} />
 
         {/* courses */}
         <Route path='/courses' element={<CoursesLayout />}>

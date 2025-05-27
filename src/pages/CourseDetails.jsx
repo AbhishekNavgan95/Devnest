@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import Container from '@/components/common/Container'
-import { api } from '@/lib/utils'
+import { api, getCloudinaryUrl } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
@@ -25,6 +25,7 @@ import { useCartStore } from '@/stores/useCartStore';
 import BuyCourseButton from '@/components/courseDetails/BuyCourseButton';
 import CreateRating from '@/components/courseDetails/CreateRating';
 import Stars from '@/components/common/Stars';
+import CourseDetailsSkeleton from '@/components/skeletons/CourseDetailsSkeleton';
 
 const fetchCourseDetails = async (id) => {
     const res = await api.get('/course/getCourseDetails/' + id)
@@ -52,9 +53,7 @@ const CourseDetails = () => {
 
     if (isPending) {
         return (
-            <div className='min-h-screen grid place-items-center'>
-                Loading...
-            </div>
+            <CourseDetailsSkeleton />
         )
     }
 
@@ -196,7 +195,7 @@ const CourseDetails = () => {
 
                 <div className='col-span-2 w-full'>
                     <div className='relative'>
-                        <video ref={videoRef} muted controls className='rounded-md w-full aspect-video' src={course?.introVideo?.url}></video>
+                        <video ref={videoRef} muted controls={!showPlayButton} className='rounded-md w-full aspect-video' src={course?.introVideo?.url}></video>
                         {
                             showPlayButton && (
                                 <button onClick={HandlePlayVideo} className='absolute top-[50%] bg-white p-2 text-4xl rounded-full text-main-400 left-[50%] translate-x-[-50%] translate-y-[-50%]'>
@@ -326,7 +325,7 @@ const CourseDetails = () => {
                                                     course?.ratingAndReviews?.slice(0, 5)?.map((e, i) => (
                                                         <div key={i} className='flex flex-col gap-y-4 bg-white border border-dark-500 p-4 rounded-md'>
                                                             <div className='flex items-center gap-x-4'>
-                                                                <img src={e?.user?.image?.url} className='w-10 aspect-square rounded-full border border-dark-500' alt="" />
+                                                                <img src={getCloudinaryUrl(e?.user?.image?.url, { width: 140, height: 140 })} className='w-10 aspect-square rounded-full border border-dark-500' alt="" />
                                                                 <div>
                                                                     <h5 className='font-medium text-base'>{e?.user?.firstName} {e?.user?.lastName}</h5>
                                                                     <Stars count={e?.rating} />
@@ -366,16 +365,16 @@ const CourseDetails = () => {
                         {/* <h2 className='text-sm font-medium text-center'>Instructor</h2> */}
                         <div className='mt-2 flex flex-col items-center gap-y-1'>
                             <div>
-                                <img src={course?.instructor?.image?.url} className='w-28 rounded-full border border-dark-700' alt="" />
+                                <img src={getCloudinaryUrl(course?.instructor?.image?.url, { width: 140, height: 140 })} className='w-28 rounded-full border border-dark-700' alt="" />
                             </div>
                             <button onClick={() => {
-                                navigate('/instructor/'+course?.instructor?._id)
+                                navigate('/instructor/' + course?.instructor?._id)
                             }} className='mt-2 font-medium cursor-pointer hover:underline'>{course?.instructor?.firstName} {course?.instructor?.lastName}</button>
                             <p className='text-xs text-center w-[80%]'>{course?.instructor?.additionalDetails?.experience}</p>
                             {course?.instructor?.additionalDetails?.niche?.length > 0 && (
                                 <div className='flex justify-center items-center gap-2 mt-2 flex-wrap'>
                                     {
-                                        course?.instructor?.additionalDetails?.niche?.slice(0,4)?.map((n, i) => (
+                                        course?.instructor?.additionalDetails?.niche?.slice(0, 4)?.map((n, i) => (
                                             <span key={i} className='text-xs px-4 py-1 rounded-md bg-main-400 text-dark-50'>
                                                 {n}
                                             </span>

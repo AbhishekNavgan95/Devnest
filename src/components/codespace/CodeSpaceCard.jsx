@@ -104,7 +104,6 @@ const CodeSpaceCard = ({ deleteCodeSpace, joinCodeSpace, data, isOwner }) => {
                                 <div className="flex justify-end w-full gap-x-4">
                                     <Button type='button' variant='outline' onClick={() => setKeyModal(false)}>Cancel</Button>
                                     <Button onClick={() => {
-                                        console.log("here")
                                         if (!joiningToken) {
                                             toast({
                                                 title: "Invalid token",

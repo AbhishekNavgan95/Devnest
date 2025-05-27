@@ -4,7 +4,7 @@ import EditProfileForm from '@/components/profile/EditProfileForm';
 import ProfilePictureUpdateForm from '@/components/profile/ProfilePictureUpdateForm';
 import UpdatePasswordForm from '@/components/profile/UpdatePasswordForm';
 import { Button } from '@/components/ui/button';
-import { api } from '@/lib/utils';
+import { api, getCloudinaryUrl } from '@/lib/utils';
 import { useUserStore } from '@/stores/useUserStore'
 import { useMutation, useQuery } from '@tanstack/react-query';
 import React, { useEffect, useState } from 'react'
@@ -74,17 +74,17 @@ const Profile = () => {
               <p className='text-dark-500 text-2xl'>Add a banner</p>
             </div>
           ) : (
-            <img src={user?.banner?.url} className='w-full object-cover h-[120px] md:h-[160px] rounded-md' alt="" />
+            <img src={getCloudinaryUrl(user?.banner?.url, { width: 1200, height: 300 })} className='w-full object-cover h-[120px] md:h-[160px] rounded-md' alt="" />
           )
         }
-        <BannerUpdateForm userProfilePicture={user?.banner?.url || 'https://placehold.co/1600x160'} />
+        <BannerUpdateForm userProfilePicture={getCloudinaryUrl(user?.banner?.url, { width: 1200, height: 300 }) || 'https://placehold.co/1600x160'} />
       </div>
 
       <div className='flex flex-col md:flex-row gap-y-4 items-start gap-x-12 px-4 md:px-8 mt-4 md:mt-12'>
 
         <div className='relative w-[100px] md:w-[140px] border border-dark-600 rounded-full'>
-          <img className='w-full aspect-square object-cover rounded-full' src={user?.image?.url || `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}`} alt="" />
-          <ProfilePictureUpdateForm userProfilePicture={user?.image?.url || `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}`} />
+          <img className='w-full aspect-square object-cover rounded-full' src={getCloudinaryUrl(user?.image?.url, { width: 140, height: 140 }) || `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}`} alt="" />
+          <ProfilePictureUpdateForm userProfilePicture={getCloudinaryUrl(user?.image?.url, { width: 140, height: 140 }) || `https://ui-avatars.com/api/?name=${user?.firstName}+${user?.lastName}`} />
         </div>
 
         {/* // I want all the childs arrange in a single column */}

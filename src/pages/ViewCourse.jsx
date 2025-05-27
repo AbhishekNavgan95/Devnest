@@ -18,7 +18,6 @@ const fetchFullCourseDetails = async (id) => {
 }
 
 const markAsCompletedfn = async (data) => {
-    console.log("calling mark api ....")
     const response = await api.post('/course/updateCourseProgress', data)
     return response.data
 }

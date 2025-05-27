@@ -5,7 +5,7 @@ import { useSocket } from "@/contexts/SocketContext";
 import RoomList from "@/components/community/RoomList";
 import { useUserStore } from "@/stores/useUserStore";
 import { useToast } from "@/hooks/use-toast";
-import { api, BASE_API_URL } from "@/lib/utils";
+import { api, BASE_API_URL, getCloudinaryUrl } from "@/lib/utils";
 import { useQuery } from "@tanstack/react-query";
 
 const fetchMessageHistory = async (id) => {
@@ -176,7 +176,7 @@ const Message = ({ message, user }) => {
     >
       {/* {!isOwnMessage && ( */}
         <img
-          src={message?.sender?.image?.url}
+          src={getCloudinaryUrl(message?.sender?.image?.url, { width: 60, height: 60 })}
           alt="user"
           className="w-6 h-6 rounded-full border border-gray-600"
         />
