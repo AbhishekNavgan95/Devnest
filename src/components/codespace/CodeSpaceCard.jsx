@@ -8,6 +8,7 @@ import ConfirmationModal from "../common/ConfirmationModal";
 import InputField from "../common/InputField";
 import { MdPassword } from "react-icons/md";
 import { useToast } from "@/hooks/use-toast";
+import { IoMdCodeWorking } from "react-icons/io";
 
 const CodeSpaceCard = ({ deleteCodeSpace, joinCodeSpace, data, isOwner }) => {
 
@@ -29,7 +30,10 @@ const CodeSpaceCard = ({ deleteCodeSpace, joinCodeSpace, data, isOwner }) => {
         <div className='bg-white border border-dark-600 rounded-md p-4 mt-3'>
             <div className='flex flex-col items-start justify-between overflow-hidden gap-y-4 relative'>
                 <span className='flex items-start justify-between w-full gap-x-4 relative'>
-                    <p className='text-sm font-medium text-dark-900 capitalize line-clamp-2'>{data?.name}  </p>
+                    <div className="flex items-center gap-2">
+                        <IoMdCodeWorking className="text-xl" />
+                        <p className='text-sm border-l border-dark-600 pl-2 font-medium text-dark-900 capitalize line-clamp-2'>{data?.name}</p>
+                    </div>
                     {
                         isPrivate && (
                             <div className='text-sm mt-1 text-green-500  rounded-full'>
