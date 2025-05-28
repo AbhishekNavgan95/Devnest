@@ -26,6 +26,7 @@ import BuyCourseButton from '@/components/courseDetails/BuyCourseButton';
 import CreateRating from '@/components/courseDetails/CreateRating';
 import Stars from '@/components/common/Stars';
 import CourseDetailsSkeleton from '@/components/skeletons/CourseDetailsSkeleton';
+import { IoCheckmarkDone } from "react-icons/io5";
 
 const fetchCourseDetails = async (id) => {
     const res = await api.get('/course/getCourseDetails/' + id)
@@ -244,7 +245,7 @@ const CourseDetails = () => {
                                         {
                                             course?.whatYouWillLearn?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <HiMiniQuestionMarkCircle size={10} className='text-base text-main-400 mt-[3px]' />
+                                                    <IoCheckmarkDone size={10} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -259,7 +260,7 @@ const CourseDetails = () => {
                                         {
                                             course?.requirements?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-[3px]' />
+                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -274,7 +275,7 @@ const CourseDetails = () => {
                                         {
                                             course?.whoThisCourseIsFor?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-[3px]' />
+                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -352,7 +353,7 @@ const CourseDetails = () => {
                             {
                                 course?.whatsIncluded?.map((e, i) => (
                                     <span key={i} className='flex items-start gap-x-3'>
-                                        <GiPlainCircle size={10} className='text-xs text-main-400' />
+                                        <GiPlainCircle size={10} className='text-xs mt-1 text-main-400' />
                                         <p className='text-sm'>{e}</p>
                                     </span>
                                 ))
