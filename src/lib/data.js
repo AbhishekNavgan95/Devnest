@@ -14,6 +14,7 @@ import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { GrGroup } from "react-icons/gr";
 import { IoCodeSlash } from "react-icons/io5";
 import { LuFolderHeart } from "react-icons/lu";
+import { MdOutlineShoppingCart } from "react-icons/md";
 
 export const categories = [
   {
@@ -262,9 +263,9 @@ export const userRoutes = {
       icon: FaListUl,
     },
     {
-      title: "Wishlist",
-      route: "/dashboard/wishlist",
-      icon: LuFolderHeart,
+      title: "Cart",
+      route: "/dashboard/cart",
+      icon: MdOutlineShoppingCart,
     },
   ],
   Admin: [],

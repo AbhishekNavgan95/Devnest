@@ -12,7 +12,7 @@ const CoursesLayout = () => {
     const navigate = useNavigate();
 
     useEffect(() => {
-        if (pathName === '/courses' && categories.length > 0) {
+        if (pathName === '/courses' && categories?.length > 0) {
             navigate(`/courses/${categories[0]?._id}/${categories[0]?.topics[0]?._id}`)
         }
     }, [pathName, categories, navigate])

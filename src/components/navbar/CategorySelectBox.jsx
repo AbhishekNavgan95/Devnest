@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from 'framer-motion'
 import { Link } from 'react-router-dom'
 
 const CategorySelectBox = ({ categories }) => {
-    
+
     const [menuOpen, setMenuOpen] = useState(false)
     const [activeCategory, setActiveCategory] = useState(null)
     const [submenu, setSubmenu] = useState([])
@@ -32,8 +32,8 @@ const CategorySelectBox = ({ categories }) => {
                 }}
                 onMouseEnter={() => {
                     setMenuOpen(true)
-                    setActiveCategory(categories[0])
-                    setSubmenu(categories[0].topics)
+                    setActiveCategory(categories?.[0])
+                    setSubmenu(categories?.[0].topics)
                 }}
                 className='border h-9 bg-second-100 my-2 py-2 px-4 rounded-sm text-xs flex items-center gap-x-2 border-dark-600 font-medium focus:outline-none focus:ring-2 focus:ring-main-400'
             >
@@ -58,7 +58,7 @@ const CategorySelectBox = ({ categories }) => {
                                 className='border  max-w-[240px] rounded-sm bg-white shadow-md'
                             >
                                 {
-                                    categories.map((category) => (
+                                    categories?.map((category) => (
                                         <button
                                             key={category._id}
                                             onMouseOver={() => {
@@ -78,7 +78,7 @@ const CategorySelectBox = ({ categories }) => {
 
                             {/* Right: Submenu Topics */}
                             {
-                                submenu.length > 0 && (
+                                submenu?.length > 0 && (
                                     <motion.div
                                         initial={{ opacity: 0, x: 10 }}
                                         animate={{ opacity: 1, x: 0 }}
@@ -86,7 +86,7 @@ const CategorySelectBox = ({ categories }) => {
                                         className='border min-w-[240px] rounded-sm bg-white shadow-md'
                                     >
                                         {
-                                            submenu.map((topic, index) => (
+                                            submenu?.map((topic, index) => (
                                                 <Link
                                                     to={`/courses/${activeCategory?._id}/${topic._id}`}
                                                     key={index}

@@ -44,7 +44,7 @@ const CoursesLayoutNav = () => {
         }
     };
 
-    const currentCategoryObj = categories.find(cat => cat._id === currentCategory);
+    const currentCategoryObj = categories?.find(cat => cat._id === currentCategory);
     const topics = currentCategoryObj?.topics || [];
 
     return (

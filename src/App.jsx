@@ -87,7 +87,7 @@ const App = () => {
           } />
 
           {/* Wishlist */}
-          <Route path='wishlist' element={
+          <Route path='cart' element={
             <DashboardLayout>
               <WishList />
             </DashboardLayout>
