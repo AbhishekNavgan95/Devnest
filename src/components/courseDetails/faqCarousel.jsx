@@ -20,8 +20,8 @@ const FAQCarousel = ({ data }) => {
             onClick={() => toggleFAQ(i)}
             className='flex items-start gap-x-3 w-full text-left'
           >
-            <FaRegCircle size={8} className='text-base text-main-400 mt-[5px]' />
-            <p className='text-sm font-medium'>{e?.question}</p>
+            <FaRegCircle size={8} className='text-base text-main-400 mt-2' />
+            <p className='text-base font-medium'>{e?.question}</p>
           </button>
 
           <AnimatePresence>

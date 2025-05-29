@@ -6,7 +6,7 @@ import { BsTwitterX } from "react-icons/bs";
 const Reviews = () => {
   return (
     <Container>
-      <div className='py-24'>
+      <div className='py-12 md:py-24'>
         <h4 className='text-center text-4xl mb-12 font-medium'>
           Words from <span className='text-main-400'>our Community</span>
         </h4>

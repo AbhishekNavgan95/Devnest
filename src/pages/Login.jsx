@@ -10,11 +10,11 @@ import { Link } from 'react-router-dom'
 const Login = () => {
     return (
         <Container>
-            <div className='w-full py-44 flex flex-row-reverse items-center gap-x-14'>
-                <div className='w-[50%]'>
-                    <h2 className='text-4xl mb-4 font-semibold'><HilightText className={'py-1'}>Welcome Back,</HilightText></h2>
-                    <h2 className='text-2xl font-medium'>Ready to Learn Something New? </h2>
-                    <p className='mt-4 text-sm'>
+            <div className='w-full py-24 md:py-44 flex flex-row-reverse items-center gap-x-14'>
+                <div className='md:w-1/2 w-full'>
+                    <h2 className='text-2xl md:text-4xl mb-4 font-semibold'><HilightText className={'py-1'}>Welcome Back,</HilightText></h2>
+                    <h2 className='text-lg md:text-2xl font-medium'>Ready to Learn Something New? </h2>
+                    <p className='mt-4 text-xs md:text-sm'>
                         Log in to continue your personalized learning experience, track your course progress, connect with instructors, join discussions, and access all your saved content in one place.
                     </p>
                     <LoginForm />
@@ -25,7 +25,7 @@ const Login = () => {
                         </Link>
                     </div>
                 </div>
-                <div className='w-1/2 flex items-center justify-center relative'>
+                <div className='w-1/2 hidden md:flex items-center justify-center relative'>
                     <img src={login} className='w-[500px] border border-dark-700 rounded-md aspect-square relative z-[2] object-cover' alt="" />
                     <img src={grid} className='w-[500px]  border-4 bg-black border-dark-700 rounded-md aspect-square absolute z-[1] inset-0 left-[50%] top-[2%] translate-x-[-48%]' alt="" />
                 </div>

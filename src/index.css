@@ -58,6 +58,14 @@
   }
 }
 
+svg.star-svg {
+  display: inline;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 @layer base {
   * {
     @apply border-border;
@@ -73,7 +81,7 @@ p::selection,
 h1::selection,
 span::selection,
 *::selection {
-  background: #364ACE;
+  background: #364ace;
   color: #ffffff;
   backdrop-filter: blur(4px);
   -webkit-backdrop-filter: blur(4px);
@@ -81,4 +89,9 @@ span::selection,
 
 .roll {
   transition-duration: 3000ms;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

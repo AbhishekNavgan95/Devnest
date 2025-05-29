@@ -1,6 +1,6 @@
 import { FaStar } from 'react-icons/fa';
 import Container from '@/components/common/Container'
-import { api } from '@/lib/utils'
+import { api, getCloudinaryUrl } from '@/lib/utils'
 import { useQuery } from '@tanstack/react-query'
 import axios from 'axios'
 import React, { useRef, useState } from 'react'
@@ -22,6 +22,11 @@ import { FaCirclePlay } from "react-icons/fa6";
 import { useUserStore } from '@/stores/useUserStore';
 import { ToastAction } from '@/components/ui/toast';
 import { useCartStore } from '@/stores/useCartStore';
+import BuyCourseButton from '@/components/courseDetails/BuyCourseButton';
+import CreateRating from '@/components/courseDetails/CreateRating';
+import Stars from '@/components/common/Stars';
+import CourseDetailsSkeleton from '@/components/skeletons/CourseDetailsSkeleton';
+import { IoCheckmarkDone } from "react-icons/io5";
 
 const fetchCourseDetails = async (id) => {
     const res = await api.get('/course/getCourseDetails/' + id)
@@ -49,9 +54,7 @@ const CourseDetails = () => {
 
     if (isPending) {
         return (
-            <div className='min-h-screen grid place-items-center'>
-                Loading...
-            </div>
+            <CourseDetailsSkeleton />
         )
     }
 
@@ -103,6 +106,10 @@ const CourseDetails = () => {
         }
     }
 
+    const avgRating = course?.ratingAndReviews?.reduce((acc, curr) => (
+        acc + curr?.rating
+    ), 0) / course?.ratingAndReviews?.length;
+
     const totalModuels = course?.courseContent?.length || 0
     const totalLectures = course?.courseContent?.reduce((acc, curr) => {
         return acc + curr?.subSection?.length
@@ -115,8 +122,12 @@ const CourseDetails = () => {
             <div className='flex lg:items-center gap-y-4 flex-col lg:flex-row justify-between gap-x-4 w-full'>
                 <div>
                     <h2 className='text-2xl font-medium line-clamp-2'>{course?.title}</h2>
-                    <p className='text-sm mt-2 text-dark-800'>{course?.category?.name}</p>
-
+                    <div className='flex items-center gap-x-4 mt-2'>
+                        <p className='text-sm  text-dark-800'>{course?.category?.name}</p>
+                        <span className='flex gap-x-2 items-center text-sm'>
+                            <Stars count={avgRating} />
+                        </span>
+                    </div>
                     <div className='flex mt-3 gap-x-4'>
                         <span className='flex gap-x-2 items-center text-sm'>
                             <span className='p-2 bg-main-400 text-xs text-dark-50 rounded-full'>
@@ -163,7 +174,7 @@ const CourseDetails = () => {
                             </button>
 
                             {
-                                user?.accountType === 'Student' &&
+                                user?.accountType === 'Student' && !user?.courses?.find((c) => c._id === courseId) &&
                                 <button onClick={handleSave} className='text-2xl '>
                                     {
                                         !cart?.find((item) => item._id === course._id) ? <FaRegBookmark /> : <FaBookmark className='text-main-400' />
@@ -171,9 +182,12 @@ const CourseDetails = () => {
                                 </button>
                             }
                         </div>
-                        <Button size='lg'>
-                            Enroll Now
-                        </Button>
+                        {
+                            user?.accountType === 'Student' ? !user?.courses?.find((c) => c._id === courseId)
+                                ? <BuyCourseButton course={course} />
+                                : !(course?.ratingAndReviews?.find(r => r?.user._id === user?._id)) ? <CreateRating courseId={courseId} /> : <Button onClick={() => navigate('/dashboard/enrolled-courses')}>View course</Button>
+                                : null
+                        }
                     </div>
                 </div>
             </div>
@@ -182,13 +196,22 @@ const CourseDetails = () => {
 
                 <div className='col-span-2 w-full'>
                     <div className='relative'>
-                        <video ref={videoRef} muted controls className='rounded-md w-full aspect-video' src={course?.introVideo?.url}></video>
+                        <video ref={videoRef} muted controls={!showPlayButton} className='rounded-md w-full aspect-video' src={course?.introVideo?.url}></video>
                         {
                             showPlayButton && (
                                 <button onClick={HandlePlayVideo} className='absolute top-[50%] bg-white p-2 text-4xl rounded-full text-main-400 left-[50%] translate-x-[-50%] translate-y-[-50%]'>
                                     <FaCirclePlay />
                                 </button>
                             )
+                        }
+                    </div>
+
+                    {/* tags */}
+                    <div className='mt-4 flex flex-wrap gap-y-2 gap-x-2 justify-center md:justify-start'>
+                        {
+                            course?.tags?.map((tag, index) => (
+                                <span key={index} className='text-xs text-dark-50 capitalize bg-main-400 px-4 py-1 rounded-md'>{tag}</span>
+                            ))
                         }
                     </div>
 
@@ -222,7 +245,7 @@ const CourseDetails = () => {
                                         {
                                             course?.whatYouWillLearn?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <HiMiniQuestionMarkCircle size={10} className='text-base text-main-400 mt-[3px]' />
+                                                    <IoCheckmarkDone size={10} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -237,7 +260,7 @@ const CourseDetails = () => {
                                         {
                                             course?.requirements?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-[3px]' />
+                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -252,7 +275,7 @@ const CourseDetails = () => {
                                         {
                                             course?.whoThisCourseIsFor?.map((e, i) => (
                                                 <span key={i} className='flex items-start gap-x-3'>
-                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-[3px]' />
+                                                    <FaRegCircle size={8} className='text-base text-main-400 mt-1' />
                                                     <p className='text-sm'>{e}</p>
                                                 </span>
                                             ))
@@ -291,7 +314,7 @@ const CourseDetails = () => {
                                 <div className=' rounded-md'>
                                     <h2 className='text-lg font-medium mb-3'>Reviews</h2>
                                     {
-                                        !course?.reviews?.length > 0 ? (
+                                        course?.reviews?.length === 0 ? (
                                             <div className='w-full h-[200px] flex items-center justify-center'>
                                                 <span>
                                                     <p>No Reviews found</p>
@@ -300,22 +323,16 @@ const CourseDetails = () => {
                                         ) : (
                                             <div className='flex flex-col gap-y-4'>
                                                 {
-                                                    course?.reviews?.map((e, i) => (
-                                                        <div key={i} className='flex flex-col gap-y-2'>
-                                                            <div className='flex items-center gap-x-2'>
-                                                                <img src={e?.user?.image?.url} className='w-10 h-10 rounded-full' alt="" />
+                                                    course?.ratingAndReviews?.slice(0, 5)?.map((e, i) => (
+                                                        <div key={i} className='flex flex-col gap-y-4 bg-white border border-dark-500 p-4 rounded-md'>
+                                                            <div className='flex items-center gap-x-4'>
+                                                                <img src={getCloudinaryUrl(e?.user?.image?.url, { width: 140, height: 140 })} className='w-10 aspect-square rounded-full border border-dark-500' alt="" />
                                                                 <div>
-                                                                    <h5 className='font-medium'>{e?.user?.firstName} {e?.user?.lastName}</h5>
-                                                                    <p className='text-xs text-dark-700'>{e?.review}</p>
+                                                                    <h5 className='font-medium text-base'>{e?.user?.firstName} {e?.user?.lastName}</h5>
+                                                                    <Stars count={e?.rating} />
                                                                 </div>
                                                             </div>
-                                                            <div className='flex items-center gap-x-2'>
-                                                                <span className='flex items-center gap-x-1'>
-                                                                    <FaStar className='text-yellow-400' />
-                                                                    <p className='text-sm'>{e?.rating}</p>
-                                                                </span>
-                                                                <p className='text-xs text-dark-700'>{e?.createdAt}</p>
-                                                            </div>
+                                                            <p className='text-sm text-dark-900 leading-relaxed'>{e?.review}</p>
                                                         </div>
                                                     ))
                                                 }
@@ -336,7 +353,7 @@ const CourseDetails = () => {
                             {
                                 course?.whatsIncluded?.map((e, i) => (
                                     <span key={i} className='flex items-start gap-x-3'>
-                                        <GiPlainCircle size={10} className='text-xs text-main-400' />
+                                        <GiPlainCircle size={10} className='text-xs mt-1 text-main-400' />
                                         <p className='text-sm'>{e}</p>
                                     </span>
                                 ))
@@ -349,15 +366,17 @@ const CourseDetails = () => {
                         {/* <h2 className='text-sm font-medium text-center'>Instructor</h2> */}
                         <div className='mt-2 flex flex-col items-center gap-y-1'>
                             <div>
-                                <img src={course?.instructor?.image?.url} className='w-28 rounded-full border border-dark-700' alt="" />
+                                <img src={getCloudinaryUrl(course?.instructor?.image?.url, { width: 140, height: 140 })} className='w-28 rounded-full border border-dark-700' alt="" />
                             </div>
-                            <h5 className='mt-2 font-medium'>{course?.instructor?.firstName} {course?.instructor?.lastName}</h5>
+                            <button onClick={() => {
+                                navigate('/instructor/' + course?.instructor?._id)
+                            }} className='mt-2 font-medium cursor-pointer hover:underline'>{course?.instructor?.firstName} {course?.instructor?.lastName}</button>
                             <p className='text-xs text-center w-[80%]'>{course?.instructor?.additionalDetails?.experience}</p>
                             {course?.instructor?.additionalDetails?.niche?.length > 0 && (
                                 <div className='flex justify-center items-center gap-2 mt-2 flex-wrap'>
                                     {
-                                        course?.instructor?.additionalDetails?.niche?.map((n, i) => (
-                                            <span key={i} className='text-[8px] px-2 py-1 rounded-md bg-main-400 text-dark-50'>
+                                        course?.instructor?.additionalDetails?.niche?.slice(0, 4)?.map((n, i) => (
+                                            <span key={i} className='text-xs px-4 py-1 rounded-md bg-main-400 text-dark-50'>
                                                 {n}
                                             </span>
                                         ))

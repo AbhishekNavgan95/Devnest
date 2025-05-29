@@ -4,6 +4,7 @@ import HeroSection from '@/components/home/HeroSection'
 import InstructorInviteSection from '@/components/home/InstructorInviteSection'
 import StepsSection from '@/components/home/StepsSection'
 import TestimonialsSection from '@/components/home/TestimonialsSection'
+import TrendingCourses from '@/components/home/TrendingCourses'
 import { BASE_URL } from '@/lib/utils'
 import { useUserStore } from '@/stores/useUserStore'
 import { useQuery } from '@tanstack/react-query'
@@ -47,8 +48,7 @@ const Home = () => {
 
       <StepsSection />
 
-      {/************ pending ->  category wise courses *******************/}
-      {/* <CourseGrid /> */}
+      <TrendingCourses />
 
       <FeaturesGrid />
 

@@ -104,7 +104,7 @@ const SignupForm = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit(submitHandler)} className='my-6 p-6 w-full bg-white border border-dark-700 rounded-md flex flex-col gap-y-4'>
+        <form onSubmit={handleSubmit(submitHandler)} className='my-6 p-4 md:p-6 w-full bg-white border border-dark-700 rounded-md flex flex-col gap-y-4'>
 
             <div className='border border-dark-700 w-max flex items-center rounded-full overflow-hidden relative'>
                 <button

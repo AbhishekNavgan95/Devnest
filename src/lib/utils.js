@@ -30,3 +30,16 @@ api.interceptors.request.use(
 );
 
 export { api };
+
+export const getCloudinaryUrl = (
+  publicUrl,
+  { width, height, crop = 'fill', quality = 'auto', format = 'auto', dpr = '' }
+) => {
+  const baseParts = publicUrl?.split('/upload/');
+  if (baseParts?.length !== 2) return publicUrl;
+
+  let transformation = `w_${width},h_${height},c_${crop},q_${quality},f_${format}`;
+  if (dpr) transformation += `,dpr_${dpr}`;
+
+  return `${baseParts[0]}/upload/${transformation}/${baseParts[1]}`;
+};

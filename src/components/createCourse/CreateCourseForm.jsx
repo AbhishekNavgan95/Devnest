@@ -26,7 +26,7 @@ import {
 import FAQsInput from './FAQsInput';
 import { MdOutlineCloudUpload } from "react-icons/md";
 import { useMutation } from '@tanstack/react-query';
-import { api } from '@/lib/utils';
+import { api, getCloudinaryUrl } from '@/lib/utils';
 import { useToast } from '@/hooks/use-toast';
 import { useCourseFormStore } from '@/stores/useCourseFormStore';
 
@@ -163,7 +163,7 @@ const CreateCourseForm = ({ topics }) => {
             whoThisCourseIsFor: edit && course ? course?.whoThisCourseIsFor : [],
             requirements: edit && course ? course?.requirements : [],
             whatsIncluded: edit && course ? course?.whatsIncluded : [],
-            thumbnail: edit && course ? course?.thumbnail?.url : null,
+            thumbnail: edit && course ? getCloudinaryUrl(course?.thumbnail?.url, { width: 400, height: 225 }) : null,
             intro: edit && course ? course?.introVideo?.url : null
         }
     })

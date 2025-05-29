@@ -14,12 +14,12 @@ import { Toaster } from "@/components/ui/toaster"
 const queryClient = new QueryClient()
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
-    <QueryClientProvider client={queryClient}>
-      <BrowserRouter>
-        <App />
-        <Toaster />
-      </BrowserRouter>
-    </QueryClientProvider>
-  </StrictMode>,
+  // <StrictMode>
+  <QueryClientProvider client={queryClient}>
+    <BrowserRouter>
+      <App />
+      <Toaster />
+    </BrowserRouter>
+  </QueryClientProvider>
+  // </StrictMode>,
 )

@@ -45,18 +45,21 @@ const CoursesLayoutNav = () => {
     };
 
     const currentCategoryObj = categories?.find(cat => cat._id === currentCategory);
+    if(!currentCategoryObj) {
+        return null; // or handle the case when the category is not found
+    }
     const topics = currentCategoryObj?.topics || [];
 
     return (
-        <div className='w-full px-14 flex justify-start items-center border-b shadow-md shadow-dark-400 h-14'>
+        <div className='w-full px-0 md:px-14 flex justify-start items-center border-b shadow-md shadow-dark-400 h-12 md:h-14'>
             <Container>
-                <div className='w-full flex items-center justify-start gap-x-4 text-sm'>
+                <div className='w-full flex items-center justify-start gap-x-2 md:gap-x-2 text-xs md:text-sm'>
                     <span>Courses</span>
                     <HiMiniSlash />
 
                     {/* Category Select */}
                     <Select value={currentCategory} onValueChange={handleCategoryChange}>
-                        <SelectTrigger className='border-0 shadow-none px-0 text-sm'>
+                        <SelectTrigger className='border-0 shadow-none px-0 text-xs md:text-sm'>
                             <SelectValue placeholder="Select a category" />
                         </SelectTrigger>
                         <SelectContent>
@@ -74,7 +77,7 @@ const CoursesLayoutNav = () => {
 
                     {/* Topic Select */}
                     <Select value={selectedTopic} onValueChange={handleTopicChange}>
-                        <SelectTrigger className='border-0 shadow-none px-0 text-sm'>
+                        <SelectTrigger className='border-0 shadow-none px-0 text-xs md:text-sm'>
                             <SelectValue placeholder="Select a topic" />
                         </SelectTrigger>
                         <SelectContent>

@@ -1,4 +1,5 @@
 import { Button } from '@/components/ui/button'
+import BuyCoursesButton from '@/components/wishlist/BuyCoursesButton'
 import CourseCard from '@/components/wishlist/CourseCard'
 import { useCartStore } from '@/stores/useCartStore'
 import React from 'react'
@@ -11,13 +12,12 @@ const WishList = () => {
   const DiscountedPrice = cart?.reduce((acc, course) => acc + Number(course.actualPrice), 0)
   const totalPrice = cart?.reduce((acc, course) => acc + Number(course.price), 0)
 
-  console.log("cart : ", cart)
   return (
     <div className='w-full'>
-      <h4 className='text-xl xl:text-3xl font-medium mb-4 md:mb-8'>Your Cart</h4>
+      <h4 className='text-xl xl:text-2xl font-medium mb-4 md:mb-8'>My Cart</h4>
 
       <div className='grid grid-cols-1 md:grid-cols-3 gap-4 w-full relative'>
-        <div className='col-span-2 p-4 bg-white rounded-md '>
+        <div className='col-span-2 p-4 bg-white rounded-md min-h-[640px] border border-dark-400'>
           {
             cart.length > 0 ? (
               <div className='flex flex-col gap-y-4'>
@@ -34,7 +34,7 @@ const WishList = () => {
             )
           }
         </div>
-        <div className='col-span-2 p-4 md:col-span-1 w-full h-max sticky top-4 rounded-md bg-white'>
+        <div className='col-span-2 p-4 md:col-span-1 w-full h-max sticky top-0 rounded-md bg-white border border-dark-400'>
           <h4 className='text-xl font-medium '>Subtotal</h4>
           <div className='my-4 space-y-1'>
             <span className='flex justify-between'>
@@ -53,7 +53,7 @@ const WishList = () => {
             <p className='flex items-center text-xl font-medium'><MdOutlineCurrencyRupee /> {DiscountedPrice}</p>
           </div>
 
-          <Button className='w-full'>Enroll in all at once</Button>
+          <BuyCoursesButton courses={cart} />
         </div>
       </div>
 

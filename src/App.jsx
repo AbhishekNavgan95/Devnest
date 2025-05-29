@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Route, Routes, useLocation } from 'react-router-dom'
 import Home from './pages/Home'
 import Navbar from './components/common/Navbar'
@@ -21,22 +21,49 @@ import WishList from './pages/WishList'
 import Courses from './pages/Courses'
 import CoursesLayout from './components/common/CoursesLayout'
 import CourseDetails from './pages/CourseDetails'
+import { SocketProvider } from './contexts/SocketContext'
+import ViewCourse from './pages/ViewCourse'
+import JoinCodeSpace from './pages/JointCodeSpace'
+import InstructorProfile from './pages/InstructorProfile'
+import ChatBot from './components/common/ChatBot'
+import ForgotPassword from './pages/ForgotPassword'
+import UpdatePassword from './pages/UpdatePassword'
 
 const App = () => {
+
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  useEffect(() => {
+    document.addEventListener('contextmenu', (e) => {
+      e.preventDefault()
+    })
+
+    return () => document.removeEventListener('contextmenu')
+  }, [])
 
   const location = useLocation();
   let showHeader = true;
   let showFooter = true;
-  if (location.pathname.includes('dashboard')) {
+  let showChatBot = true;
+
+  if (location.pathname.includes('dashboard') || location.pathname.includes('view-course') || location.pathname.includes('/code/')) {
     showHeader = false;
     showFooter = false;
+    showChatBot = false;
   }
 
   return (
-    <div className='font-roboto bg-dark-50'>
+    <div className='font-roboto bg-dark-50 min-h-screen'>
       {
         showHeader && <Navbar />
       }
+
+      {
+        showChatBot && <ChatBot />
+      }
+
       <Routes>
 
         {/* public routes */}
@@ -47,6 +74,8 @@ const App = () => {
         <Route path='/login' element={<PublicRoutes><Login /></PublicRoutes>} />
         <Route path='/signup' element={<PublicRoutes><Signup /></PublicRoutes>} />
         <Route path='/verify/:token' element={<PublicRoutes><VerifyAccount /></PublicRoutes>} />
+        <Route path='/forgot-password' element={<PublicRoutes><ForgotPassword /></PublicRoutes>} />
+        <Route path='/update-password/:token' element={<PublicRoutes><UpdatePassword /></PublicRoutes>} />
 
         {/* courses */}
         <Route path='/courses' element={<CoursesLayout />}>
@@ -54,6 +83,15 @@ const App = () => {
         </Route>
 
         <Route path='/course-details/:courseId' element={<CourseDetails />} />
+        <Route path='/view-course/:id' element={<ViewCourse />} />
+        <Route path='/instructor/:id' element={<InstructorProfile />} />
+
+        {/* Join CodeSpace */}
+        <Route path='/code/:codeSpaceId' element={
+          <SocketProvider>
+            <JoinCodeSpace />
+          </SocketProvider>
+        } />
 
         {/* dashboard routes */}
         <Route path='/dashboard' element={<Dashboard />}>
@@ -103,19 +141,20 @@ const App = () => {
           {/* Community */}
           <Route path='community' element={
             <DashboardLayout>
-              <Community />
+              <SocketProvider>
+                <Community />
+              </SocketProvider>
             </DashboardLayout>
           } />
 
           {/* CodeSpace */}
           <Route path='codespace' element={
             <DashboardLayout>
-              <CodeSpace />
+              <SocketProvider>
+                <CodeSpace />
+              </SocketProvider>
             </DashboardLayout>
           } />
-
-
-
         </Route>
       </Routes>
 
