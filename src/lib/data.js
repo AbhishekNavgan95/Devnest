@@ -9,7 +9,7 @@ import image8 from "../assets/profiles/image8.png";
 import image9 from "../assets/profiles/image9.png";
 import { FaRegUserCircle } from "react-icons/fa";
 import { FaListUl } from "react-icons/fa6";
-import { MdOutlineCreateNewFolder } from "react-icons/md";
+import { MdOutlineCreateNewFolder, MdOutlineShoppingCart } from "react-icons/md";
 import { TbBrandGoogleAnalytics } from "react-icons/tb";
 import { GrGroup } from "react-icons/gr";
 import { IoCodeSlash } from "react-icons/io5";
