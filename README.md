@@ -64,7 +64,7 @@ Devnest is an AI-powered full-stack platform designed to enhance the learning ex
 
 | Home Page | Nestor (AI Assistant) | Codespace | Community Chat | Dashboard |
 |-----------|--------------|-----------|-----------|-----------|
-| ![Home](./screenshots/home.png) | ![Nestor](./screenshots/nestor.png) | ![Codespace](./screenshots/codespace.png) | ![Community](./screenshots/community.png) | ![Dashboard](./screenshots/dashboard.png) |
+| ![Home](./screenshots/Home.png) | ![Nestor](./screenshots/Nestor.png) | ![Codespace](./screenshots/CodeSpace.png) | ![Community](./screenshots/Community.png) | ![Dashboard](./screenshots/Dashboard.png) |
 
 ---
 
