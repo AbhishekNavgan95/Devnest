@@ -3,7 +3,7 @@
 Devnest is an AI-powered full-stack platform designed to enhance the learning experience for developers. It enables real-time collaboration, structured course learning, community interaction, and intelligent assistance through an integrated AI bot.
 
 > 🔗 **Live Site**: [https://devnest-an.netlify.app/](https://devnest-an.netlify.app/)  
-> 🔧 **Backend Repo**: [Devnest Backend](https://github.com/your-username/devnest-backend)
+> 🔧 **Backend Repo**: [Devnest Backend](https://github.com/AbhishekNavgan95/devnest-backend)
 
 ---
 
